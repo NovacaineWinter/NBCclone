@@ -1,0 +1,84 @@
+
+html, body {
+    color: #83817e;
+    font-family: 'Raleway', sans-serif;
+}
+
+
+#homebanner{
+    background-image: url(/img/img1.jpg);
+}
+
+
+
+
+#cookieHeader{
+    background-color:#83817e;
+}
+
+#acceptCookies{
+    background-color: #ff7404;
+    color:#fdfdfd;
+}
+
+.btn-info{
+    background-color: #ff7404;
+    border-color:#ff7404;
+}
+
+#databanner{
+    text-shadow: 1px 1px 2px #83817e;
+}
+
+#faqbanner{
+    text-shadow: 1px 1px 2px #83817e;    
+}
+
+#navbar .navborder{
+    border: 1px solid #ff7404;
+}
+
+#navbar .navborder:hover{
+    background-color:#fdfdfd;
+    color:#83817e;
+}
+
+#navbar{
+    background-color: #83817e;
+}
+
+#footer{
+    background-color: #83817e;
+}
+
+.taglineholder{
+    background-color: #ff7404;
+    border-top: 25px solid #83817e;
+    border-bottom: 25px solid #83817e;
+}
+
+#narrowNav{
+    background-color: #83817e;
+}
+
+.btn-info:hover{
+    background-color:#83817e;
+    border-color:#83817e;
+}
+
+#mobilePriceSummary{
+    color:#83817e;
+}
+
+.questionHeader{    
+    border: 1px solid #83817e;
+    color: #83817e;
+}
+
+.questionContent{
+    border:1px solid #83817e;    
+}
+
+.expandFaq{
+    border:1px solid #83817e;
+}

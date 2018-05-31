@@ -9,7 +9,7 @@
 		 			@if($boat->images->count()>0)
 		 				<div class="col-sm-2 img150pix"><img src="{{ url(Storage::url($boat->images->sortByDesc('primary')->first()->src)) }}"></div>
                   	@else
-                  		<div class="col-sm-2 img150pix"><img src="{{ url('/img/defaultBoat.png') }}"></div>
+                  		<div class="col-sm-2 img150pix"><img src="{{ env('DEFAULT_BOAT_CARD') }}"></div>
                   	@endif    
 				
 				<div class="col-sm-2 text-right">{{{$boat->name}}}</div>

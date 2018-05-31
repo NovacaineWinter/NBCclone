@@ -30,7 +30,7 @@
                 @if($boat->img->count()>0)
                     <div class="cardimage" style="background-image:url('{{ url(Storage::url($boat->img->sortByDesc('primary')->first()->src)) }}')"></div>
                 @else
-                    <div class="cardimage" style="background-image:url('{{ url('/img/defaultBoat.png') }}')"></div>
+                    <div class="cardimage" style="background-image:url('{{{  env('DEFAULT_BOAT_CARD') }}}')"></div>
                 @endif
 
                 

@@ -49,7 +49,7 @@
                           </div>           
 
                       @else
-                        <div class="col-sm-6 imagetile" target="{{ url('/img/defaultBoat.png') }}"></div>
+                        <div class="col-sm-6 imagetile" target="{{ env('DEFAULT_BOAT_CARD') }}"></div>
                       @endif    
 
 

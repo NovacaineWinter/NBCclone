@@ -7,6 +7,6 @@ use Illuminate\Http\Request;
 class landingPageController extends Controller
 {
     public function pageSelector(){
-    	return view('landingPage1');
+    	return view(env('LANDINGPAGE_VIEW'));
     }
 }

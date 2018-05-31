@@ -1,8 +1,6 @@
 
 html, body {
     background-color: #fff;
-    color: #122134;
-    font-family: 'Raleway', sans-serif;
     font-weight: 300;
     height: 100vh;
     margin: 0;
@@ -16,6 +14,99 @@ a:hover{
     text-decoration: none;
 }
 
+/* Generic */
+
+
+
+#cookieHeader{
+    text-transform: uppercase;
+    font-size: 2vw;
+    color:#fdfdfd;
+}
+#acceptCookies{
+    cursor:pointer;
+}
+.btn-info{
+    margin-top:20px;
+}
+
+#databanner{
+    background-image: url(/img/data.jpg);
+    height:35vh; 
+    color: #fdfdfd;
+}
+
+#faqbanner{
+    background-image: url(/img/river.jpg);
+    height:35vh; 
+    color: #fdfdfd;
+    background-position-y: 560px;
+}
+
+#navbar .navborder{
+    padding: 10px 25px;
+}
+
+#navbar{
+    height: 69px; 
+    position: fixed;
+    width: 100vw;
+    z-index: 2;
+}
+
+#footer{
+    height: 69px;
+    padding-top: 20px;
+    position:absolute;
+    width:100%;
+}
+
+.taglineholder{
+    padding: 20px 0px;
+}
+
+#narrowNav{
+    top: 50px;
+    position: fixed;
+    right: 0px;    
+    padding: 20px;
+    border-left: 1px solid #e8e8e8;
+    border-bottom:1px solid #e8e8e8;
+}
+
+#mobilePriceSummary{
+    width:100vw;
+    position:fixed;
+    height:50px;
+    top:50px;
+    left:0px;
+    border-bottom:1px solid #e7e7e7;
+    background-color:#fdfdfd;
+    z-index:2;    
+    display:none;
+}
+
+
+
+.questionHeader{    
+    padding: 10px;    
+    font-size: 19px;
+    text-transform: capitalize;
+}
+
+.questionContent{
+    display:none;
+}
+
+.expandFaq{
+    padding:5px;    
+    text-align: center;
+    cursor:pointer;
+}
+
+
+
+
 .cookiebuttons{
     margin:0px 10px;
     padding:20px;
@@ -23,21 +114,12 @@ a:hover{
 #cookiebar{
     text-align: center;
 }
-#cookieHeader{
-    text-transform: uppercase;
-    font-size: 2vw;
-    color:#fdfdfd;
-    background-color:#120134;
-}
+
 #cookieExplainer{
     box-sizing: border-box;
     padding:5vw;
 }
-#acceptCookies{
-    background-color: #0077cf;
-    color:#fdfdfd;
-    cursor:pointer;
-}
+
 #acceptCookies:hover{
     background-color: green;
     color:#fdfdfd;
@@ -62,7 +144,20 @@ a:hover{
 }
 
 
+.questionHeader .col-sm-10{
+    text-align: left;
+}
 
+.tagline{
+    font-size: 25px;
+    /* line-height: 2.5; */
+    color: #fdfdfd;
+    font-weight: 300;
+    text-transform: uppercase;
+    max-width: 1100px;
+    max-width:75vw;
+    margin:auto;
+}
 
 
 #blankout{
@@ -196,43 +291,12 @@ a:hover{
     display:none;
 }
 
-.tagline{
-    font-size: 25px;
-    /* line-height: 2.5; */
-    color: #fdfdfd;
-    font-weight: 300;
-    text-transform: uppercase;
-    max-width: 1100px;
-    max-width:75vw;
-    margin:auto;
-}
 
-.taglineholder{
-    background-color: #0077cf;
-    padding: 20px 0px;
-    border-top: 25px solid #122134;
-    border-bottom: 25px solid #122134;
-}
 
 .textcontainer{
     padding:40px 100px;
 }
 
-#navbar{
-    height: 69px;   
-    background-color: #122134;
-    position: fixed;
-    width: 100vw;
-    z-index: 2;
-}
-
-#footer{
-    height: 69px;   
-    background-color: #122134; 
-    padding-top: 20px;
-    position:absolute;
-    width:100%;
-}
 
 .brandingimg{
     max-width: 20vw;
@@ -440,14 +504,6 @@ input[type=checkbox] {
 }
 
 
-#navbar .navborder{
-    border: 1px solid #0077cf;
-    padding: 10px 25px;
-}
-#navbar .navborder:hover{
-    background-color:#fdfdfd;
-    color:#122134;
-}
 
 .bannerimg{
     height: 70vh;
@@ -455,28 +511,12 @@ input[type=checkbox] {
     background-size: cover;
 }
 
-#homebanner{
-    background-image: url(/img/home1.jpg);
-}
 
 #contactbanner{
     background-image: url(/img/map.jpg);
     height:35vh;
 }
-#databanner{
-    background-image: url(/img/data.jpg);
-    height:35vh; 
-    color: #fdfdfd;
-    text-shadow: 1px 1px 2px #122134;
-}
 
-#faqbanner{
-    background-image: url(/img/river.jpg);
-    height:35vh; 
-    color: #fdfdfd;
-    text-shadow: 1px 1px 2px #122134;
-    background-position-y: 560px;
-}
 .boatcard{
     border: 1px solid #a8a8a8;
     padding: 30px;    
@@ -604,15 +644,7 @@ html[xmlns] .clearfix {
 
 
 
-#narrowNav{
-    top: 50px;
-    position: fixed;
-    right: 0px;
-    background-color: #122134;
-    padding: 20px;
-    border-left: 1px solid #e8e8e8;
-    border-bottom:1px solid #e8e8e8;
-}
+
 
 #narrowNav ul {
     list-style-type: none;
@@ -637,33 +669,15 @@ html[xmlns] .clearfix {
 }
 
 
-.btn-info{
-    background-color: #0077cf;
-    border-color:#0077cf;
-    margin-top:20px;
-}
-.btn-info:hover{
-    background-color:#122134;
-    border-color:#122134;
-}
+
+
 
 #nbclogoimg{
     max-width:20vw;
 }
 
 
-#mobilePriceSummary{
-    width:100vw;
-    position:fixed;
-    height:50px;
-    top:50px;
-    left:0px;
-    border-bottom:1px solid #e7e7e7;
-    background-color:#fdfdfd;
-    z-index:2;
-    color:#122134;
-    display:none;
-}
+
 
 #viewSummaryButton{
     position: absolute;
@@ -672,31 +686,6 @@ html[xmlns] .clearfix {
 }
 
 
-.questionHeader{
-    border: 1px solid #122134;
-    padding: 10px;
-    color: #122134;
-    font-size: 19px;
-    text-transform: capitalize;
-}
-
-.questionHeader .col-sm-10{
-    text-align: left;
-}
-
-
-.questionContent{
-    border:1px solid #122134;
-    display:none;
-}
-
-
-.expandFaq{
-    padding:5px;
-    border:1px solid #122134;
-    text-align: center;
-    cursor:pointer;
-}
 .questionContainer{
     margin: 10px 0px;
 }
