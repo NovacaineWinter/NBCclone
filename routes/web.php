@@ -12,6 +12,12 @@
 */
 
 
+/* Vue Routes */
+Route::get('/vue', function() { return view('layouts.vue'); });
+Route::get('/vue/info/hullstyles', function() { return \App\hull_style::all();});
+Route::get('/vue/info/boat-selector-all-info','vue@boatSelectorData');
+
+
 
 if(env('HAS_CONFIGURATOR')){ /* Configurator stuff */
 

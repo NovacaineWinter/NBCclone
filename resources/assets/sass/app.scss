@@ -4,3 +4,92 @@
 
 // Variables
 @import "variables";
+
+
+//Bulma Styles
+/* @import './node_modules/bulma/bulma.sass';  */
+
+
+
+// 3. Set the derived variables
+// Use the new pink as the primary color
+$info: $brand-primary;
+$primary:#00d1b2;  //bulma default that got broken
+$warning:$brand-secondary;
+$warning-invert:#eddecb;
+
+@import './node_modules/bulma/bulma.sass'; 
+
+h1,h2,h3,h4,h5,p,a{
+	font-family:'Raleway';
+}
+
+body{
+	background-color:#cccccc;
+}
+
+
+
+.is-branded{
+	background-color:$brand-secondary;
+	color:$text-light;
+	
+	h1,h2,h3,h4,p{
+		color:$text-light
+	}
+}
+
+
+.whitecontainer{
+	background-color:$text-light;
+	border-radius:10px;
+	margin:20px auto;
+}
+
+#app{
+	padding-top:69px;
+	position:relative; 
+	min-height:100vh; 
+	padding-bottom:200px;
+	/* background-color:$brand-primary; */
+}
+
+
+
+#logoimg{
+	max-width:20vw;
+	position:absolute;
+	top:0px;
+	left:0px;
+	z-index:3;
+}
+
+#footimg{
+	max-width:20vw;
+	position:absolute;
+	bottom:0px;
+	right:0px;
+	z-index:3;
+}
+
+#footer{
+	height:69px;
+	background-color:$brand-secondary;
+	position:absolute;
+	bottom:0px;
+	width:100%;
+}
+
+
+
+.hoverable{cursor:pointer;}
+.hoverable:hover{background-color:$hover-background-color;}
+
+.nosquash{
+	background-size: cover;
+	background-position: center;
+}
+
+.pointer{
+	cursor:pointer;
+}
