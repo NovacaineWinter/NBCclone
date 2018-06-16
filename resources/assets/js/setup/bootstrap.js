@@ -1,18 +1,16 @@
 import Vue from 'vue';
 import axios from 'axios';
 import VueRouter from 'vue-router';
-import vueSmoothScroll from 'vue-smooth-scroll'
-
+import vueSmoothScroll from 'vue-smooth-scroll';
+/*import fontawesome from '@fortawesome/fontawesome';*/
 
 import './setupRoutes.js';
 import './navbarItems.js';	
-
 
 import '../base/baseSetup.js';
 
 /*Load module components*/
 import '../loadComponents';
-
 
 /*load dynamic components*/
 
