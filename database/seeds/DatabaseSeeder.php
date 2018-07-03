@@ -18,5 +18,7 @@ class DatabaseSeeder extends Seeder
         $this->call(seedWidths::class);
         $this->call(seedConfigurations::class);
         $this->call(seedStockBoats::class);
+        $this->call(testAdminUser::class);
+        $this->call(seedInfobites::class);
     }
 }

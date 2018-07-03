@@ -19,8 +19,9 @@ class CreateModelsTable extends Migration
             $table->string('short_description',500); 
             $table->string('comparison',5000);
             $table->string('long_description',5000);
-            $table->string('specsheet')->default('');
-            $table->string('img')->default('/img/nbcDefault.png');          
+            $table->string('specsheet')->default(''); 
+            $table->integer('primary_image_id')->default(0);   
+            $table->integer('hull_style_id');     
             $table->timestamps();
         });
     }

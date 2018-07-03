@@ -16,9 +16,11 @@ class CreateFilesTable extends Migration
         Schema::create('files', function (Blueprint $table) {
             $table->increments('id');
             $table->string('src');
+            $table->string('asset')->default('');
             $table->integer('owner_id');
             $table->string('owner_type');
             $table->boolean('is_image');
+            $table->boolean('is_in_carousel')->default(true);
             $table->string('description')->default('');
             $table->timestamps();
         });

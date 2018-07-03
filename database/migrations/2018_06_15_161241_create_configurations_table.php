@@ -17,7 +17,7 @@ class CreateConfigurationsTable extends Migration
             $table->increments('id');
             $table->string('description');
             $table->integer('trim_level_id');
-            $table->integer('model_id'); 
+            $table->integer('boat_model_id'); 
             $table->integer('length_id');
             $table->integer('width_id');
             $table->decimal('base_price_ex_vat',10,2);

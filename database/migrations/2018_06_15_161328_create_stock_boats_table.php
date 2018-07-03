@@ -16,13 +16,14 @@ class CreateStockBoatsTable extends Migration
         Schema::create('stock_boats', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
-            $table->string('description');
-            $table->string('short_summary');
+            $table->string('description',5000);
+            $table->string('short_summary',1000);
             $table->integer('configuration_id');                       
-            $table->decimal('price',10,2);
+            $table->decimal('price_ex_vat',10,2);
             $table->boolean('sold')->default(0);
             $table->string('specsheet')->default('');
             $table->string('nonce')->default('');
+            $table->integer('primary_image_id')->default(0); 
             $table->timestamps();
         });
     }

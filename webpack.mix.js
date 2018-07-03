@@ -1,5 +1,5 @@
 let mix = require('laravel-mix');
-
+let mixagain = require('laravel-mix');
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -12,12 +12,9 @@ let mix = require('laravel-mix');
  */
 
 
-const path = require('path');
-
-
-
-mix.js('resources/assets/js/setup/app.js', 'public/js')
-   	.sass('resources/assets/sass/app.scss', 'public/css')
+/*    Laravel Mix for public Vue application    */
+mix.js('resources/assets/public/setup/app.js', 'public/js')
+   	.sass('resources/assets/public/app.scss', 'public/css')
 	.webpackConfig({
 	   resolve: {
 		    alias: { 
@@ -28,4 +25,13 @@ mix.js('resources/assets/js/setup/app.js', 'public/js')
 
 
 
-
+/*    Laravel Mix for admin Vue application    */
+mixagain.js('resources/assets/admin/setup/admin.js', 'public/js')
+    	.sass('resources/assets/admin/admin.scss', 'public/css')
+    	.webpackConfig({
+		   resolve: {
+			    alias: { 
+			        'sass': path.join(__dirname, 'resources/assets/sass')
+			    }
+			}
+		});
