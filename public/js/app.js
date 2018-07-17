@@ -829,6 +829,8 @@ var boatSelector = {
 	},
 	chosen: {
 		detail: 'singleObject',
+		suppressForward: false,
+		configuration_complete: false,
 		helpMeChoose: {
 			items: {},
 			topic: ''
@@ -34777,13 +34779,12 @@ if (false) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_boatSelector_bootstrap_js__ = __webpack_require__(68);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_core_bootstrap_js__ = __webpack_require__(153);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_stockBoats_bootstrap_js__ = __webpack_require__(176);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_contactForm_bootstrap_js__ = __webpack_require__(199);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_contactForm_bootstrap_js__ = __webpack_require__(199);
 /* In here we load the bootstrap file from each of the components we have in the app */
 
 
 
-
+//import  './components/stockBoats/bootstrap.js';
 
 
 /***/ }),
@@ -35152,17 +35153,28 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	mounted: function mounted() {
+		var _this = this;
+
 		setTimeout(function () {
 			window.scrollTo(0, 0);
 		}, 100);
+
+		this.imported.chosen.suppressForward = true;
+
+		this.imported.raw.generic[0].infobites.forEach(function (infobite) {
+			_this.imported.chosen.detail.infobites.push(infobite);
+		}
+
+		/*function(infobite){
+  	this.imported.chosen.detail.infobites.push(infobite)
+  }*/
+		);
 	},
 	data: function data() {
 		return {
@@ -35173,6 +35185,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	computed: {
 		carouselImages: function carouselImages() {
 			return _.filter(this.imported.chosen.detail.images, { is_in_carousel: 1 });
+		},
+		bannerTitle: function bannerTitle() {
+			if (this.imported.chosen.configuration_complete) {
+				var choices = this.imported.chosen.choices;
+
+				return choices.boat_model.name + ' ' + choices.trim_level.name + ' ' + choices.loa.feet + 'x' + choices.beam.feet;
+			} else {
+				return this.imported.chosen.detail.name;
+			}
 		}
 	}
 
@@ -35190,13 +35211,10 @@ var render = function() {
     _c("section", { staticClass: "hero is-info is-medium" }, [
       _c("div", { staticClass: "hero-body" }, [
         _c("div", { staticClass: "container" }, [
-          _c("h1", { staticClass: "title" }, [
-            _vm._v(
-              "\n\t\t\t\t\t" +
-                _vm._s(_vm.imported.chosen.detail.name) +
-                "\n\t\t\t\t"
-            )
-          ]),
+          _c("h1", {
+            staticClass: "title",
+            domProps: { textContent: _vm._s(_vm.bannerTitle) }
+          }),
           _vm._v(" "),
           _c("h2", { staticClass: "subtitle" }, [
             _vm._v(
@@ -35236,9 +35254,10 @@ var render = function() {
       [
         _c("div", { staticClass: "header-for-detail is-fullwidth" }, [
           _c("div", { staticClass: "tabs is-right navbar" }, [
-            _c("h1", { staticClass: "title" }, [
-              _vm._v(_vm._s(_vm.imported.chosen.detail.name))
-            ]),
+            _c("h1", {
+              staticClass: "title",
+              domProps: { textContent: _vm._s(_vm.bannerTitle) }
+            }),
             _vm._v(" "),
             _c(
               "ul",
@@ -35289,9 +35308,9 @@ var render = function() {
                   "router-link",
                   {
                     staticClass: "visit-us",
-                    attrs: { to: "/book-a-visit", tag: "li", exact: "" }
+                    attrs: { to: "/contact-us", tag: "li", exact: "" }
                   },
-                  [_c("a", [_c("span", [_vm._v("Book a Visit")])])]
+                  [_c("a", [_c("span", [_vm._v("Contact us")])])]
                 )
               ],
               1
@@ -35582,7 +35601,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 this.shared.chosen.choices.active_selector = 'trim';
             } else {
                 this.shared.chosen.choices.active_selector = 'finished';
-                alert('finished config');
+                this.shared.chosen.configuration_complete = true;
+                //alert('finished config');
+                this.shared.chosen.detail = this.shared.chosen.choices.boat_model;
+
+                if (!this.shared.chosen.suppressForward) {
+                    this.$router.push('/detail');
+                }
             }
         },
         hullChosen: function hullChosen(hull) {
@@ -35604,6 +35629,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         trimChosen: function trimChosen(trim) {
             this.shared.chosen.choices.trim_level = trim;
+            this.shared.chosen.suppressForward = false;
             this.identifyNextChoice();
         },
         loadContent: function loadContent() {
@@ -36136,6 +36162,10 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(325)
+}
 var normalizeComponent = __webpack_require__(0)
 /* script */
 var __vue_script__ = __webpack_require__(92)
@@ -36144,7 +36174,7 @@ var __vue_template__ = __webpack_require__(93)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
-var __vue_styles__ = null
+var __vue_styles__ = injectStyle
 /* scopeId */
 var __vue_scopeId__ = null
 /* moduleIdentifier (server only) */
@@ -36213,7 +36243,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "tile is-parent" }, [
+  return _c("div", { staticClass: "tile is-parent numbercard" }, [
     _c(
       "article",
       {
@@ -38231,7 +38261,7 @@ var render = function() {
       )
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "columns" }, [
+    _c("div", { staticClass: "columns infobites" }, [
       _c("div", {
         staticClass: "column has-text-centered",
         domProps: {
@@ -39344,6 +39374,38 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 //import endpoints from '../endpoints.js';   //relative path - beware
@@ -39365,9 +39427,74 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div")
+  return _vm._m(0)
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "container whitecontainer section" }, [
+      _c("h2", { staticClass: "title" }, [_vm._v("How we manage your data")]),
+      _vm._v(" "),
+      _c("p", [_vm._v("We set the following category of cookies;")]),
+      _vm._v(" "),
+      _c("h4", { staticClass: "subtitle" }, [_vm._v("XSRF cookies")]),
+      _vm._v(" "),
+      _c("p", [
+        _vm._v(
+          "\n                    These cookies are set as a security measure. They are a nececary measure to reduce the liklehood of a type of cyberattack called a Cross-site request forgery. You can read more about what XSRF is "
+        ),
+        _c(
+          "a",
+          {
+            attrs: {
+              href: "https://en.wikipedia.org/wiki/Cross-site_request_forge"
+            }
+          },
+          [_vm._v("here")]
+        ),
+        _vm._v(
+          ". You are not identifiable from this cookie as it is pseudonymous. This cookie is vital to the safe functioning of this site. It is not possible to use this site without this cookie. As such, this cookie cannot be rejected and will still be set even if you click the reject cookies button. If this cookie is not present, our server will reject your connection to our website. This is a transient cookie and will be erased once you leave this site.\n                "
+        )
+      ]),
+      _vm._v(" "),
+      _c("br"),
+      _c("br"),
+      _vm._v(" "),
+      _c("h4", { staticClass: "subtitle" }, [
+        _vm._v("Session Cookies and session variables")
+      ]),
+      _vm._v(" "),
+      _c("p", [
+        _vm._v(
+          "\n                    These are set to organise your visit to the site. For example, the options you select on our configurator are stored in session variables in order for the configurator to function. Without these we cannot provide the services we provide on the website, as such it is not possible to reject the use of these cookies and variables and still use the site. These will still be set even if you click the reject cookies button. All of these are transient and will be erased once you leave this site.\n                "
+        )
+      ]),
+      _vm._v(" "),
+      _c("br"),
+      _c("br"),
+      _vm._v(" "),
+      _c("h4", { staticClass: "subtitle" }, [_vm._v("Analytics Cookies")]),
+      _vm._v(" "),
+      _c("p", [
+        _vm._v(
+          "\n                    As per most websites, We use analytics packages such as Google analytics to gain an insight as to how you interact with this site. We don't collect this information for nefarious reasons, we are constantly working on making this the best possible website for people interested in sailaway boats. Without this information we can't see what features are useful to you and what are not. All the analytics data collected is anonymous and cannot be used to identify you. This information is incredibly useful to us to make this website as good as it can possibly be. These cookies and variables are optional. If you click reject cookies, these will not be set, your interations with the website will not be analysed and your visit wont allow us to improve our website.\n                "
+        )
+      ]),
+      _vm._v(" "),
+      _c("h4", { staticClass: "subtitle" }, [
+        _vm._v("General data management")
+      ]),
+      _vm._v(" "),
+      _c("p", [
+        _vm._v(
+          '\n                    When you save a configuration on our configurator, we necessarily store your information so you can retrieve your configuration at a later date. This information includes the name you provided us along with your email address. We also store your configuration preferences under a reference code provided to you. If you wish to excercise your rights under the GDPR "right to be forgotten" then email us at info@nottinghamboatco.com and ALL your personally identifiable data will be deleted from all our systems without unnecessary delay. \n                '
+        )
+      ])
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -39481,6 +39608,519 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 //import endpoints from '../endpoints.js';   //relative path - beware
@@ -39502,9 +40142,1148 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div")
+  return _vm._m(0)
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "section container whitecontainer" }, [
+      _c("h2", { staticClass: "title" }, [_vm._v("Data Protection Policy")]),
+      _vm._v(" "),
+      _c("p", { staticStyle: { "text-align": "left" } }, [
+        _vm._v("\n                        Nottingham Boat Co Ltd."),
+        _c("br"),
+        _c("br"),
+        _vm._v("\n\n                        Data Protection Policy"),
+        _c("br"),
+        _c("br"),
+        _vm._v("\n\n                        May 2018"),
+        _c("br"),
+        _c("br"),
+        _vm._v("\n\n\n\n                        Introduction"),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        This Policy sets out the obligations of Nottingham Boat Company trading as Sailaways.net, a company registered in United Kingdom under number 07910197 whose registered office is at Red Hill Marina, Ratcliffe-on-Soar, NG11 0EB (“the Company”) regarding data protection and the rights of customers and business contacts (“data subjects”) in respect of their personal data under EU Regulation 2016/679 General Data Protection Regulation (“GDPR”)."
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        The GDPR defines “personal data” as any information relating to an identified or identifiable natural person (a “data subject”); an identifiable natural person is one who can be identified, directly or indirectly, in particular by reference to an identifier such as a name, an identification number, location data, an online identifier, or to one or more factors specific to the physical, physiological, genetic, mental, economic, cultural, or social identity of that natural person."
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        This Policy sets the Company’s obligations regarding the collection, processing, transfer, storage, and disposal of personal data. The procedures and principles set out herein must be followed at all times by the Company, its employees, agents, contractors, or other parties working on behalf of the Company."
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        The Company is committed not only to the letter of the law, but also to the spirit of the law and places high importance on the correct, lawful, and fair handling of all personal data, respecting the legal rights, privacy, and trust of all individuals with whom it deals."
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n\n\n                        The Data Protection Principles"
+        ),
+        _c("br"),
+        _c("br"),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        This Policy aims to ensure compliance with the GDPR. The GDPR sets out the following principles with which any party handling personal data must comply. All personal data must be:"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        Processed lawfully, fairly, and in a transparent manner in relation to the data subject."
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        Collected for specified, explicit, and legitimate purposes and not further processed in a manner that is incompatible with those purposes. Further processing for archiving purposes in the public interest, scientific or historical research purposes or statistical purposes shall not be considered to be incompatible with the initial purposes."
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        Adequate, relevant, and limited to what is necessary in relation to the purposes for which it is processed."
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        Accurate and, where necessary, kept up to date. Every reasonable step must be taken to ensure that personal data that is inaccurate, having regard to the purposes for which it is processed, is erased, or rectified without delay."
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        Kept in a form which permits identification of data subjects for no longer than is necessary for the purposes for which the personal data is processed. Personal data may be stored for longer periods insofar as the personal data will be processed solely for archiving purposes in the public interest, scientific or historical research purposes, or statistical purposes, subject to implementation of the appropriate technical and organisational measures required by the GDPR in order to safeguard the rights and freedoms of the data subject."
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        Processed in a manner that ensures appropriate security of the personal data, including protection against unauthorised or unlawful processing and against accidental loss, destruction, or damage, using appropriate technical or organisational measures."
+        ),
+        _c("br"),
+        _c("br"),
+        _c("br"),
+        _c("br"),
+        _vm._v("\n\n\n\n                        The Rights of Data Subjects"),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        The GDPR sets out the following rights applicable to data subjects (please refer to the parts of this policy indicated for further details):"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        The right to be informed (Part 12)."
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v("\n\n                        The right of access (Part 13);"),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        The right to rectification (Part 14);"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        The right to erasure (also known as the ‘right to be forgotten’) (Part 15);"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        The right to restrict processing (Part 16);"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        The right to data portability (Part 17);"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        The right to object (Part 18); and"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        Rights with respect to automated decision-making and profiling (Parts 19 and 20)."
+        ),
+        _c("br"),
+        _c("br"),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n\n\n                        Lawful, Fair, and Transparent Data Processing"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        The GDPR seeks to ensure that personal data is processed lawfully, fairly, and transparently, without adversely affecting the rights of the data subject. The GDPR states that processing of personal data shall be lawful if at least one of the following applies:"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        The data subject has given consent to the processing of their personal data for one or more specific purposes;"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        The processing is necessary for the performance of a contract to which the data subject is a party, or in order to take steps at the request of the data subject prior to entering into a contract with them;"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        The processing is necessary for compliance with a legal obligation to which the data controller is subject;"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        The processing is necessary to protect the vital interests of the data subject or of another natural person;"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        The processing is necessary for the performance of a task carried out in the public interest or in the exercise of official authority vested in the data controller; or"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        The processing is necessary for the purposes of the legitimate interests pursued by the data controller or by a third party, except where such interests are overridden by the fundamental rights and freedoms of the data subject which require protection of personal data, in particular where the data subject is a child."
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        [If the personal data in question is “special category data” (also known as “sensitive personal data”) (for example, data concerning the data subject’s race, ethnicity, politics, religion, trade union membership, genetics, biometrics (if used for ID purposes), health, sex life, or sexual orientation), at least one of the following conditions must be met:"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        The data subject has given their explicit consent to the processing of such data for one or more specified purposes (unless EU or EU Member State law prohibits them from doing so);"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        The processing is necessary for the purpose of carrying out the obligations and exercising specific rights of the data controller or of the data subject in the field of employment, social security, and social protection law (insofar as it is authorised by EU or EU Member State law or a collective agreement pursuant to EU Member State law which provides for appropriate safeguards for the fundamental rights and interests of the data subject);"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        The processing is necessary to protect the vital interests of the data subject or of another natural person where the data subject is physically or legally incapable of giving consent;"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        The data controller is a foundation, association, or other non-profit body with a political, philosophical, religious, or trade union aim, and the processing is carried out in the course of its legitimate activities, provided that the processing relates solely to the members or former members of that body or to persons who have regular contact with it in connection with its purposes and that the personal data is not disclosed outside the body without the consent of the data subjects;"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        The processing relates to personal data which is clearly made public by the data subject;"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        The processing is necessary for the conduct of legal claims or whenever courts are acting in their judicial capacity;"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        The processing is necessary for substantial public interest reasons, on the basis of EU or EU Member State law which shall be proportionate to the aim pursued, shall respect the essence of the right to data protection, and shall provide for suitable and specific measures to safeguard the fundamental rights and interests of the data subject;"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        The processing is necessary for the purposes of preventative or occupational medicine, for the assessment of the working capacity of an employee, for medical diagnosis, for the provision of health or social care or treatment, or the management of health or social care systems or services on the basis of EU or EU Member State law or pursuant to a contract with a health professional, subject to the conditions and safeguards referred to in Article 9(3) of the GDPR;"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        The processing is necessary for public interest reasons in the area of public health, for example, protecting against serious cross-border threats to health or ensuring high standards of quality and safety of health care and of medicinal products or medical devices, on the basis of EU or EU Member State law which provides for suitable and specific measures to safeguard the rights and freedoms of the data subject (in particular, professional secrecy); or"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        The processing is necessary for archiving purposes in the public interest, scientific or historical research purposes, or statistical purposes in accordance with Article 89(1) of the GDPR based on EU or EU Member State law which shall be proportionate to the aim pursued, respect the essence of the right to data protection, and provide for suitable and specific measures to safeguard the fundamental rights and the interests of the data subject.]"
+        ),
+        _c("br"),
+        _c("br"),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n\n\n                        Specified, Explicit, and Legitimate Purposes"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        The Company collects and processes the personal data set out in Part 21 of this Policy. This includes:"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        Personal data collected directly from data subjects[.] OR [; and]"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        [Personal data obtained from third parties.]"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        The Company only collects, processes, and holds personal data for the specific purposes set out in Part 21 of this Policy (or for other purposes expressly permitted by the GDPR)."
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        Data subjects are kept informed at all times of the purpose or purposes for which the Company uses their personal data. Please refer to Part 12 for more information on keeping data subjects informed."
+        ),
+        _c("br"),
+        _c("br"),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n\n\n                        Adequate, Relevant, and Limited Data Processing"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        The Company will only collect and process personal data for and to the extent necessary for the specific purpose or purposes of which data subjects have been informed (or will be informed) as under Part 5, above, and as set out in Part 21, below."
+        ),
+        _c("br"),
+        _c("br"),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n\n\n                        Accuracy of Data and Keeping Data Up-to-Date"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        The Company shall ensure that all personal data collected, processed, and held by it is kept accurate and up-to-date. This includes, but is not limited to, the rectification of personal data at the request of a data subject, as set out in Part 14, below."
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        The accuracy of personal data shall be checked when it is collected and at regular intervals thereafter. If any personal data is found to be inaccurate or out-of-date, all reasonable steps will be taken without delay to amend or erase that data, as appropriate."
+        ),
+        _c("br"),
+        _c("br"),
+        _c("br"),
+        _c("br"),
+        _vm._v("\n\n\n\n                        Data Retention"),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        The Company shall not keep personal data for any longer than is necessary in light of the purpose or purposes for which that personal data was originally collected, held, and processed."
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        When personal data is no longer required, all reasonable steps will be taken to erase or otherwise dispose of it without delay."
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        For full details of the Company’s approach to data retention, including retention periods for specific personal data types held by the Company, please refer to our Data Retention Policy."
+        ),
+        _c("br"),
+        _c("br"),
+        _c("br"),
+        _c("br"),
+        _vm._v("\n\n\n\n                        Secure Processing"),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        The Company shall ensure that all personal data collected, held, and processed is kept secure and protected against unauthorised or unlawful processing and against accidental loss, destruction, or damage. Further details of the technical and organisational measures which shall be taken are provided in Parts 22 to 27 of this Policy."
+        ),
+        _c("br"),
+        _c("br"),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n\n\n                        Accountability and Record-Keeping"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        The Company’s Data Protection Officer is Leslie Robinson, les@NottinghamBoatCo.com"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        The Data Protection Officer shall be responsible for overseeing the implementation of this Policy and for monitoring compliance with this Policy, the Company’s other data protection-related policies, and with the GDPR and other applicable data protection legislation."
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        The Company shall keep written internal records of all personal data collection, holding, and processing, which shall incorporate the following information:"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        The name and details of the Company, its Data Protection Officer, and any applicable third-party data processors;"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        The purposes for which the Company collects, holds, and processes personal data;"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        Details of the categories of personal data collected, held, and processed by the Company, and the categories of data subject to which that personal data relates;"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        Details of any transfers of personal data to non-EEA countries including all mechanisms and security safeguards;"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        Details of how long personal data will be retained by the Company (please refer to the Company’s Data Retention Policy); and"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        Detailed descriptions of all technical and organisational measures taken by the Company to ensure the security of personal data."
+        ),
+        _c("br"),
+        _c("br"),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n\n\n                        Data Protection Impact Assessments"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        The Company shall carry out Data Protection Impact Assessments for any and all new projects and/or new uses of personal data [which involve the use of new technologies and the processing involved is likely to result in a high risk to the rights and freedoms of data subjects under the GDPR]."
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        Data Protection Impact Assessments shall be overseen by the Data Protection Officer and shall address the following:"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        The type(s) of personal data that will be collected, held, and processed;"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        The purpose(s) for which personal data is to be used;"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v("\n\n                        The Company’s objectives;"),
+        _c("br"),
+        _c("br"),
+        _vm._v("\n\n                        How personal data is to be used;"),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        The parties (internal and/or external) who are to be consulted;"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        The necessity and proportionality of the data processing with respect to the purpose(s) for which it is being processed;"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v("\n\n                        Risks posed to data subjects;"),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        Risks posed both within and to the Company; and"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        Proposed measures to minimise and handle identified risks."
+        ),
+        _c("br"),
+        _c("br"),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n\n\n                        Keeping Data Subjects Informed"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(" "),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n                        The Company shall provide the information set out in Part 12.2 to every data subject:"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        Where personal data is collected directly from data subjects, those data subjects will be informed of its purpose at the time of collection; and"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        Where personal data is obtained from a third party, the relevant data subjects will be informed of its purpose:"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        if the personal data is used to communicate with the data subject, when the first communication is made; or"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        if the personal data is to be transferred to another party, before that transfer is made; or"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        as soon as reasonably possible and in any event not more than one month after the personal data is obtained."
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        The following information shall be provided:"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        Details of the Company including, but not limited to, the identity of its Data Protection Officer;"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        The purpose(s) for which the personal data is being collected and will be processed (as detailed in Part 21 of this Policy) and the legal basis justifying that collection and processing;"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        Where applicable, the legitimate interests upon which the Company is justifying its collection and processing of the personal data;"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        Where the personal data is not obtained directly from the data subject, the categories of personal data collected and processed;"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        Where the personal data is to be transferred to one or more third parties, details of those parties;"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        Where the personal data is to be transferred to a third party that is located outside of the European Economic Area (the “EEA”), details of that transfer, including but not limited to the safeguards in place (see Part 28 of this Policy for further details);"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v("\n\n                        Details of data retention;"),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        Details of the data subject’s rights under the GDPR;"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        Details of the data subject’s right to withdraw their consent to the Company’s processing of their personal data at any time;"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        Details of the data subject’s right to complain to the Information Commissioner’s Office (the “supervisory authority” under the GDPR);"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        Where applicable, details of any legal or contractual requirement or obligation necessitating the collection and processing of the personal data and details of any consequences of failing to provide it; and"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        Details of any automated decision-making or profiling that will take place using the personal data, including information on how decisions will be made, the significance of those decisions, and any consequences."
+        ),
+        _c("br"),
+        _c("br"),
+        _c("br"),
+        _c("br"),
+        _vm._v("\n\n\n\n                        Data Subject Access"),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        Data subjects may make subject access requests (“SARs”) at any time to find out more about the personal data which the Company holds about them, what it is doing with that personal data, and why."
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        Employees wishing to make a SAR should do using a Subject Access Request Form, sending the form to the Company’s Data Protection Officer at info@NottinghamBoatCo.com"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        Responses to SARs shall normally be made within one month of receipt, however this may be extended by up to two months if the SAR is complex and/or numerous requests are made. If such additional time is required, the data subject shall be informed."
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        All SARs received shall be handled by the Company’s Data Protection Officer."
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        The Company does not charge a fee for the handling of normal SARs. The Company reserves the right to charge reasonable fees for additional copies of information that has already been supplied to a data subject, and for requests that are manifestly unfounded or excessive, particularly where such requests are repetitive."
+        ),
+        _c("br"),
+        _c("br"),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n\n\n                        Rectification of Personal Data"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        Data subjects have the right to require the Company to rectify any of their personal data that is inaccurate or incomplete."
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        The Company shall rectify the personal data in question, and inform the data subject of that rectification, within one month of the data subject informing the Company of the issue. The period can be extended by up to two months in the case of complex requests. If such additional time is required, the data subject shall be informed."
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        In the event that any affected personal data has been disclosed to third parties, those parties shall be informed of any rectification that must be made to that personal data."
+        ),
+        _c("br"),
+        _c("br"),
+        _c("br"),
+        _c("br"),
+        _vm._v("\n\n\n\n                        Erasure of Personal Data"),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        Data subjects have the right to request that the Company erases the personal data it holds about them in the following circumstances:"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        It is no longer necessary for the Company to hold that personal data with respect to the purpose(s) for which it was originally collected or processed;"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        The data subject wishes to withdraw their consent to the Company holding and processing their personal data;"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        The data subject objects to the Company holding and processing their personal data (and there is no overriding legitimate interest to allow the Company to continue doing so) (see Part 18 of this Policy for further details concerning the right to object);"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        The personal data has been processed unlawfully;"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        The personal data needs to be erased in order for the Company to comply with a particular legal obligation[;] OR [.]"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        [The personal data is being held and processed for the purpose of providing information society services to a child.]"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        Unless the Company has reasonable grounds to refuse to erase personal data, all requests for erasure shall be complied with, and the data subject informed of the erasure, within one month of receipt of the data subject’s request. The period can be extended by up to two months in the case of complex requests. If such additional time is required, the data subject shall be informed."
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        In the event that any personal data that is to be erased in response to a data subject’s request has been disclosed to third parties, those parties shall be informed of the erasure (unless it is impossible or would require disproportionate effort to do so)."
+        ),
+        _c("br"),
+        _c("br"),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n\n\n                        Restriction of Personal Data Processing"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        Data subjects may request that the Company ceases processing the personal data it holds about them. If a data subject makes such a request, the Company shall retain only the amount of personal data concerning that data subject (if any) that is necessary to ensure that the personal data in question is not processed further."
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        In the event that any affected personal data has been disclosed to third parties, those parties shall be informed of the applicable restrictions on processing it (unless it is impossible or would require disproportionate effort to do so)."
+        ),
+        _c("br"),
+        _c("br"),
+        _c("br"),
+        _c("br"),
+        _vm._v("\n\n\n\n                        [Data Portability"),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        The Company processes personal data using automated means."
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        Where data subjects have given their consent to the Company to process their personal data in such a manner, or the processing is otherwise required for the performance of a contract between the Company and the data subject, data subjects have the right, under the GDPR, to receive a copy of their personal data and to use it for other purposes (namely transmitting it to other data controllers)."
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        To facilitate the right of data portability, the Company shall make available all applicable personal data to data subjects in the following format[s]:"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v("\n\n                        Excel format"),
+        _c("br"),
+        _c("br"),
+        _vm._v("\n\n                        Word format."),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        Where technically feasible, if requested by a data subject, personal data shall be sent directly to the required data controller."
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        All requests for copies of personal data shall be complied with within one month of the data subject’s request. The period can be extended by up to two months in the case of complex or numerous requests. If such additional time is required, the data subject shall be informed.]"
+        ),
+        _c("br"),
+        _c("br"),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n\n\n                        Objections to Personal Data Processing"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        Data subjects have the right to object to the Company processing their personal data based on legitimate interests, direct marketing (including profiling), [and processing for scientific and/or historical research and statistics purposes]."
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        Where a data subject objects to the Company processing their personal data based on its legitimate interests, the Company shall cease such processing immediately, unless it can be demonstrated that the Company’s legitimate grounds for such processing override the data subject’s interests, rights, and freedoms, or that the processing is necessary for the conduct of legal claims."
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        Where a data subject objects to the Company processing their personal data for direct marketing purposes, the Company shall cease such processing immediately."
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        [Where a data subject objects to the Company processing their personal data for scientific and/or historical research and statistics purposes, the data subject must, under the GDPR, “demonstrate grounds relating to his or her particular situation”. The Company is not required to comply if the research is necessary for the performance of a task carried out for reasons of public interest.]"
+        ),
+        _c("br"),
+        _c("br"),
+        _c("br"),
+        _c("br"),
+        _vm._v("\n\n\n\n                        [Automated Decision-Making"),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        The Company uses personal data in automated decision-making processes."
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        Where such decisions have a legal (or similarly significant effect) on data subjects, those data subjects have the right to challenge to such decisions under the GDPR, requesting human intervention, expressing their own point of view, and obtaining an explanation of the decision from the Company."
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        The right described in Part 19.2 does not apply in the following circumstances:"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        The decision is necessary for the entry into, or performance of, a contract between the Company and the data subject;"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        The decision is authorised by law; or"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        The data subject has given their explicit consent.]"
+        ),
+        _c("br"),
+        _c("br"),
+        _c("br"),
+        _c("br"),
+        _vm._v("\n\n\n\n                        [Profiling"),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        The Company uses personal data for profiling purposes."
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        When personal data is used for profiling purposes, the following shall apply:"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        Clear information explaining the profiling shall be provided to data subjects, including the significance and likely consequences of the profiling;"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        Appropriate mathematical or statistical procedures shall be used;"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        Technical and organisational measures shall be implemented to minimise the risk of errors. If errors occur, such measures must enable them to be easily corrected; and"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        All personal data processed for profiling purposes shall be secured in order to prevent discriminatory effects arising out of profiling (see Parts 22 to 26 of this Policy for more details on data security).]"
+        ),
+        _c("br"),
+        _c("br"),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n\n\n                        Personal Data Collected, Held, and Processed"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        The following personal data is collected, held, and processed by the Company (for details of data retention, please refer to the Company’s Data Retention Policy):"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n\n\n                        Data Ref.       Type of Data    Purpose of Data         Email   Email data      Communication and marketing             Phone number    Phone number    Communication and marketing"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        Data Security - Transferring Personal Data and Communications"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        The Company shall ensure that the following measures are taken with respect to all communications and other transfers involving personal data:"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        All emails containing personal data must be encrypted."
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        All emails containing personal data must be marked “confidential”;"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        Personal data may be transmitted over secure networks only; transmission over unsecured networks is not permitted in any circumstances;"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        Personal data may not be transmitted over a wireless network if there is a wired alternative that is reasonably practicable;"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        Where personal data is to be sent by facsimile transmission the recipient should be informed in advance of the transmission and should be waiting by the fax machine to receive the data;"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        All personal data to be transferred physically, whether in hardcopy form or on removable electronic media shall be transferred in a suitable container marked “confidential”."
+        ),
+        _c("br"),
+        _c("br"),
+        _c("br"),
+        _c("br"),
+        _vm._v("\n\n\n\n                        Data Security - Storage"),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        The Company shall ensure that the following measures are taken with respect to the storage of personal data:"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        All electronic copies of personal data should be stored securely using passwords and data encryption;"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        All hardcopies of personal data, along with any electronic copies stored on physical, removable media should be stored securely in a locked box, drawer, cabinet, or similar;"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        All personal data stored electronically should be backed up with backups stored [onsite] AND/OR [offsite]. All backups should be encrypted."
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        No personal data should be transferred to any device personally belonging to an employee and personal data may only be transferred to devices belonging to agents, contractors, or other parties working on behalf of the Company where the party in question has agreed to comply fully with the letter and spirit of this Policy and of the GDPR (which may include demonstrating to the Company that all suitable technical and organisational measures have been taken)."
+        ),
+        _c("br"),
+        _c("br"),
+        _c("br"),
+        _c("br"),
+        _vm._v("\n\n\n\n                        Data Security - Disposal"),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        When any personal data is to be erased or otherwise disposed of for any reason (including where copies have been made and are no longer needed), it should be securely deleted and disposed of. For further information on the deletion and disposal of personal data, please refer to the Company’s Data Retention Policy."
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n\n\n                        Data Security - Use of Personal Data"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        The Company shall ensure that the following measures are taken with respect to the use of personal data:"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        No personal data may be shared informally and if an employee, agent, sub-contractor, or other party working on behalf of the Company requires access to any personal data that they do not already have access to, such access should be formally requested from Karen Kirby, Director."
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        No personal data may be transferred to any employees, agents, contractors, or other parties, whether such parties are working on behalf of the Company or not, without the authorisation of either Director."
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        Personal data must be handled with care at all times and should not be left unattended or on view to unauthorised employees, agents, sub-contractors, or other parties at any time;"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        If personal data is being viewed on a computer screen and the computer in question is to be left unattended for any period of time, the user must lock the computer and screen before leaving it; and"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        Where personal data held by the Company is used for marketing purposes, it shall be the responsibility of the directors to ensure that the appropriate consent is obtained and that no data subjects have opted out, whether directly or via a third-party service such as the TPS."
+        ),
+        _c("br"),
+        _c("br"),
+        _c("br"),
+        _c("br"),
+        _vm._v("\n\n\n\n                        Data Security - IT Security"),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        The Company shall ensure that the following measures are taken with respect to IT and information security:"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        All passwords used to protect personal data should be changed regularly and should not use words or phrases that can be easily guessed or otherwise compromised. All passwords must contain a combination of uppercase and lowercase letters, numbers, and symbols. [All software used by the Company is designed to require such passwords.];"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        Under no circumstances should any passwords be written down or shared between any employees, agents, contractors, or other parties working on behalf of the Company, irrespective of seniority or department. If a password is forgotten, it must be reset using the applicable method. IT staff do not have access to passwords;"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        All software (including, but not limited to, applications and operating systems) shall be kept up-to-date. The Company’s IT staff shall be responsible for installing any and all security-related updates after the updates are made available by the publisher or manufacturer] OR [as soon as reasonably and practically possible] [, unless there are valid technical reasons not to do so]; and"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        No software may be installed on any Company-owned computer or device without the prior approval of the the directors."
+        ),
+        _c("br"),
+        _c("br"),
+        _c("br"),
+        _c("br"),
+        _vm._v("\n\n\n\n                        Organisational Measures"),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        The Company shall ensure that the following measures are taken with respect to the collection, holding, and processing of personal data:"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        All employees, agents, contractors, or other parties working on behalf of the Company shall be made fully aware of both their individual responsibilities and the Company’s responsibilities under the GDPR and under this Policy, and shall be provided with a copy of this Policy;"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        Only employees, agents, sub-contractors, or other parties working on behalf of the Company that need access to, and use of, personal data in order to carry out their assigned duties correctly shall have access to personal data held by the Company;"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        All employees, agents, contractors, or other parties working on behalf of the Company handling personal data will be appropriately trained to do so;"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        All employees, agents, contractors, or other parties working on behalf of the Company handling personal data will be appropriately supervised;"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        All employees, agents, contractors, or other parties working on behalf of the Company handling personal data shall be required and encouraged to exercise care, caution, and discretion when discussing work-related matters that relate to personal data, whether in the workplace or otherwise;"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        Methods of collecting, holding, and processing personal data shall be regularly evaluated and reviewed;"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        All personal data held by the Company shall be reviewed periodically, as set out in the Company’s Data Retention Policy;"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        The performance of those employees, agents, contractors, or other parties working on behalf of the Company handling personal data shall be regularly evaluated and reviewed;"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        All employees, agents, contractors, or other parties working on behalf of the Company handling personal data will be bound to do so in accordance with the principles of the GDPR and this Policy by contract;"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        All agents, contractors, or other parties working on behalf of the Company handling personal data must ensure that any and all of their employees who are involved in the processing of personal data are held to the same conditions as those relevant employees of the Company arising out of this Policy and the GDPR; and"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        Where any agent, contractor or other party working on behalf of the Company handling personal data fails in their obligations under this Policy that party shall indemnify and hold harmless the Company against any costs, liability, damages, loss, claims or proceedings which may arise out of that failure."
+        ),
+        _c("br"),
+        _c("br"),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n\n\n                        Transferring Personal Data to a Country Outside the EEA"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        The Company may from time to time transfer (‘transfer’ includes making available remotely) personal data to countries outside of the EEA."
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        The transfer of personal data to a country outside of the EEA shall take place only if one or more of the following applies:"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        The transfer is to a country, territory, or one or more specific sectors in that country (or an international organisation), that the European Commission has determined ensures an adequate level of protection for personal data;"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        The transfer is to a country (or international organisation) which provides appropriate safeguards in the form of a legally binding agreement between public authorities or bodies; binding corporate rules; standard data protection clauses adopted by the European Commission; compliance with an approved code of conduct approved by a supervisory authority (e.g. the Information Commissioner’s Office); certification under an approved certification mechanism (as provided for in the GDPR); contractual clauses agreed and authorised by the competent supervisory authority; or provisions inserted into administrative arrangements between public authorities or bodies authorised by the competent supervisory authority;"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        The transfer is made with the informed consent of the relevant data subject(s);"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        The transfer is necessary for the performance of a contract between the data subject and the Company (or for pre-contractual steps taken at the request of the data subject);"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        The transfer is necessary for important public interest reasons;"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        The transfer is necessary for the conduct of legal claims;"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        The transfer is necessary to protect the vital interests of the data subject or other individuals where the data subject is physically or legally unable to give their consent; or"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        The transfer is made from a register that, under UK or EU law, is intended to provide information to the public and which is open for access by the public in general or otherwise to those who are able to show a legitimate interest in accessing the register."
+        ),
+        _c("br"),
+        _c("br"),
+        _c("br"),
+        _c("br"),
+        _vm._v("\n\n\n\n                        Data Breach Notification"),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        All personal data breaches must be reported immediately to the Company’s Data Protection Officer."
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        If a personal data breach occurs and that breach is likely to result in a risk to the rights and freedoms of data subjects (e.g. financial loss, breach of confidentiality, discrimination, reputational damage, or other significant social or economic damage), the Data Protection Officer must ensure that the Information Commissioner’s Office is informed of the breach without delay, and in any event, within 72 hours after having become aware of it."
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        In the event that a personal data breach is likely to result in a high risk (that is, a higher risk than that described under Part 29.2) to the rights and freedoms of data subjects, the Data Protection Officer must ensure that all affected data subjects are informed of the breach directly and without undue delay."
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        Data breach notifications shall include the following information:"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        The categories and approximate number of data subjects concerned;"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        The categories and approximate number of personal data records concerned;"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        The name and contact details of the Company’s data protection officer (or other contact point where more information can be obtained);"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        The likely consequences of the breach;"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        Details of the measures taken, or proposed to be taken, by the Company to address the breach including, where appropriate, measures to mitigate its possible adverse effects."
+        ),
+        _c("br"),
+        _c("br"),
+        _c("br"),
+        _c("br"),
+        _vm._v("\n\n\n\n                        Implementation of Policy"),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        This Policy shall be deemed effective as of 1st April 2018 No part of this Policy shall have retroactive effect and shall thus apply only to matters occurring on or after this date."
+        ),
+        _c("br"),
+        _c("br"),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n\n\n                        This Policy has been approved and authorised by:"
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(
+          "\n\n                        Name:   Leslie Robinson             Position:       Director                Date:   1st May 2018\n                    "
+        )
+      ])
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -40041,679 +41820,29 @@ if (false) {
 }
 
 /***/ }),
-/* 176 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-
-
-__webpack_require__(177);
-__webpack_require__(183);
-
-/* Stock Boat Selector */
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('all-stock-boats', __webpack_require__(184));
-//Subcomponents
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('stock-boat-card', __webpack_require__(189));
-
-/*	Stock boat detail	*/
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('stock-boat-detail', __webpack_require__(194));
-
-/***/ }),
-/* 177 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__setup_setupRoutes__ = __webpack_require__(10);
-
-
-__WEBPACK_IMPORTED_MODULE_0__setup_setupRoutes__["a" /* default */].push({
-	path: '/stock',
-
-	component: __webpack_require__(178)
-});
-
-/***/ }),
-/* 178 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__(179)
-}
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(181)
-/* template */
-var __vue_template__ = __webpack_require__(182)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = injectStyle
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/public/components/stockBoats/views/stock.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-dc88b94c", Component.options)
-  } else {
-    hotAPI.reload("data-v-dc88b94c", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 179 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(180);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(2)("3c0bf378", content, false, {});
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-dc88b94c\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./stock.vue", function() {
-     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-dc88b94c\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./stock.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 180 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(1)(false);
-// imports
-
-
-// module
-exports.push([module.i, "", ""]);
-
-// exports
-
-
-/***/ }),
-/* 181 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-
-
-//import endpoints from '../endpoints.js';   //relative path - beware
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    mounted: function mounted() {
-        setTimeout(function () {
-            window.scrollTo(0, 0);
-        }, 100);
-    }
-});
-
-/***/ }),
-/* 182 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("stock-boat-detail")
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-dc88b94c", module.exports)
-  }
-}
-
-/***/ }),
-/* 183 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__setup_navbarItems__ = __webpack_require__(11);
-
-
-__WEBPACK_IMPORTED_MODULE_0__setup_navbarItems__["a" /* default */].push({
-	uri: '/stock',
-	text: 'Boats In Stock',
-	position: 30,
-	bold: true
-});
-
-/***/ }),
-/* 184 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__(185)
-}
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(187)
-/* template */
-var __vue_template__ = __webpack_require__(188)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = injectStyle
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/public/components/stockBoats/components/selector/stockBoatSelectorComponent.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-0c214baa", Component.options)
-  } else {
-    hotAPI.reload("data-v-0c214baa", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 185 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(186);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(2)("086f1f0d", content, false, {});
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-0c214baa\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../../node_modules/sass-loader/lib/loader.js!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./stockBoatSelectorComponent.vue", function() {
-     var newContent = require("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-0c214baa\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../../node_modules/sass-loader/lib/loader.js!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./stockBoatSelectorComponent.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 186 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(1)(false);
-// imports
-
-
-// module
-exports.push([module.i, "", ""]);
-
-// exports
-
-
-/***/ }),
-/* 187 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-
-
-//import endpoints from '../endpoints.js';   //relative path - beware
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    /*
-       mounted() {        	
-           
-           axios.get(endpoints.someEndpoint)            
-               .then(handleResponse.bind('data',this))
-                .catch(function (error) {
-                   console.log(error);            
-               });
-                function handleResponse(context,response){
-                   //context is an alias for 'this'
-                   context.someDataOnThis = response.data;
-               }
-       },
-        methods:{
-           myMethod(){
-               console.log('my method triggered');
-           },
-       },
-        computed:{
-       	someNumber(){
-       		return 2+3;
-       	},        	
-       },
-        data: function() {
-     return{
-         someDataOnThis:'',		        
-       }
-    },
-     props: [
-     'propsPassed'
-    ], */
-
-});
-
-/***/ }),
-/* 188 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div")
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-0c214baa", module.exports)
-  }
-}
-
-/***/ }),
-/* 189 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__(190)
-}
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(192)
-/* template */
-var __vue_template__ = __webpack_require__(193)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = injectStyle
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/public/components/stockBoats/components/selector/stockBoatSelectorCard.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-26a0d9f3", Component.options)
-  } else {
-    hotAPI.reload("data-v-26a0d9f3", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 190 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(191);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(2)("511838f0", content, false, {});
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-26a0d9f3\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../../node_modules/sass-loader/lib/loader.js!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./stockBoatSelectorCard.vue", function() {
-     var newContent = require("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-26a0d9f3\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../../node_modules/sass-loader/lib/loader.js!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./stockBoatSelectorCard.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 191 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(1)(false);
-// imports
-
-
-// module
-exports.push([module.i, "", ""]);
-
-// exports
-
-
-/***/ }),
-/* 192 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-
-
-//import endpoints from '../endpoints.js';   //relative path - beware
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    /*
-       mounted() {        	
-           
-           axios.get(endpoints.someEndpoint)            
-               .then(handleResponse.bind('data',this))
-                .catch(function (error) {
-                   console.log(error);            
-               });
-                function handleResponse(context,response){
-                   //context is an alias for 'this'
-                   context.someDataOnThis = response.data;
-               }
-       },
-        methods:{
-           myMethod(){
-               console.log('my method triggered');
-           },
-       },
-        computed:{
-       	someNumber(){
-       		return 2+3;
-       	},        	
-       },
-        data: function() {
-     return{
-         someDataOnThis:'',		        
-       }
-    },
-     props: [
-     'propsPassed'
-    ], */
-
-});
-
-/***/ }),
-/* 193 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div")
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-26a0d9f3", module.exports)
-  }
-}
-
-/***/ }),
-/* 194 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__(195)
-}
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(197)
-/* template */
-var __vue_template__ = __webpack_require__(198)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = injectStyle
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/public/components/stockBoats/components/detail/stockBoatDetailComponent.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-209e84c6", Component.options)
-  } else {
-    hotAPI.reload("data-v-209e84c6", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 195 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(196);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(2)("676d3914", content, false, {});
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-209e84c6\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../../node_modules/sass-loader/lib/loader.js!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./stockBoatDetailComponent.vue", function() {
-     var newContent = require("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-209e84c6\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../../node_modules/sass-loader/lib/loader.js!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./stockBoatDetailComponent.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 196 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(1)(false);
-// imports
-
-
-// module
-exports.push([module.i, "", ""]);
-
-// exports
-
-
-/***/ }),
-/* 197 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-
-
-//import endpoints from '../endpoints.js';   //relative path - beware
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    /*
-       mounted() {        	
-           
-           axios.get(endpoints.someEndpoint)            
-               .then(handleResponse.bind('data',this))
-                .catch(function (error) {
-                   console.log(error);            
-               });
-                function handleResponse(context,response){
-                   //context is an alias for 'this'
-                   context.someDataOnThis = response.data;
-               }
-       },
-        methods:{
-           myMethod(){
-               console.log('my method triggered');
-           },
-       },
-        computed:{
-       	someNumber(){
-       		return 2+3;
-       	},        	
-       },
-        data: function() {
-     return{
-         someDataOnThis:'',		        
-       }
-    },
-     props: [
-     'propsPassed'
-    ], */
-
-});
-
-/***/ }),
-/* 198 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div")
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-209e84c6", module.exports)
-  }
-}
-
-/***/ }),
+/* 176 */,
+/* 177 */,
+/* 178 */,
+/* 179 */,
+/* 180 */,
+/* 181 */,
+/* 182 */,
+/* 183 */,
+/* 184 */,
+/* 185 */,
+/* 186 */,
+/* 187 */,
+/* 188 */,
+/* 189 */,
+/* 190 */,
+/* 191 */,
+/* 192 */,
+/* 193 */,
+/* 194 */,
+/* 195 */,
+/* 196 */,
+/* 197 */,
+/* 198 */,
 /* 199 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -41414,6 +42543,154 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 217 */,
+/* 218 */,
+/* 219 */,
+/* 220 */,
+/* 221 */,
+/* 222 */,
+/* 223 */,
+/* 224 */,
+/* 225 */,
+/* 226 */,
+/* 227 */,
+/* 228 */,
+/* 229 */,
+/* 230 */,
+/* 231 */,
+/* 232 */,
+/* 233 */,
+/* 234 */,
+/* 235 */,
+/* 236 */,
+/* 237 */,
+/* 238 */,
+/* 239 */,
+/* 240 */,
+/* 241 */,
+/* 242 */,
+/* 243 */,
+/* 244 */,
+/* 245 */,
+/* 246 */,
+/* 247 */,
+/* 248 */,
+/* 249 */,
+/* 250 */,
+/* 251 */,
+/* 252 */,
+/* 253 */,
+/* 254 */,
+/* 255 */,
+/* 256 */,
+/* 257 */,
+/* 258 */,
+/* 259 */,
+/* 260 */,
+/* 261 */,
+/* 262 */,
+/* 263 */,
+/* 264 */,
+/* 265 */,
+/* 266 */,
+/* 267 */,
+/* 268 */,
+/* 269 */,
+/* 270 */,
+/* 271 */,
+/* 272 */,
+/* 273 */,
+/* 274 */,
+/* 275 */,
+/* 276 */,
+/* 277 */,
+/* 278 */,
+/* 279 */,
+/* 280 */,
+/* 281 */,
+/* 282 */,
+/* 283 */,
+/* 284 */,
+/* 285 */,
+/* 286 */,
+/* 287 */,
+/* 288 */,
+/* 289 */,
+/* 290 */,
+/* 291 */,
+/* 292 */,
+/* 293 */,
+/* 294 */,
+/* 295 */,
+/* 296 */,
+/* 297 */,
+/* 298 */,
+/* 299 */,
+/* 300 */,
+/* 301 */,
+/* 302 */,
+/* 303 */,
+/* 304 */,
+/* 305 */,
+/* 306 */,
+/* 307 */,
+/* 308 */,
+/* 309 */,
+/* 310 */,
+/* 311 */,
+/* 312 */,
+/* 313 */,
+/* 314 */,
+/* 315 */,
+/* 316 */,
+/* 317 */,
+/* 318 */,
+/* 319 */,
+/* 320 */,
+/* 321 */,
+/* 322 */,
+/* 323 */,
+/* 324 */,
+/* 325 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(326);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("5110eb98", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../../../node_modules/css-loader/index.js!../../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-f098f5c6\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../../../node_modules/sass-loader/lib/loader.js!../../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./numberCard.vue", function() {
+     var newContent = require("!!../../../../../../../../node_modules/css-loader/index.js!../../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-f098f5c6\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../../../node_modules/sass-loader/lib/loader.js!../../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./numberCard.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 326 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.numbercard {\n  max-width: 25%;\n}\n", ""]);
+
+// exports
+
 
 /***/ })
 /******/ ]);

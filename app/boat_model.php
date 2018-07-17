@@ -34,7 +34,9 @@ class boat_model extends Model
         ]);
     } 
 
-    
+    public function hullStyle(){
+        return $this->belongsTo('\App\hull_style','hull_style_id');
+    }
 
     public function configurations(){
     	return $this->hasMany('\App\configuration','boat_model_id');

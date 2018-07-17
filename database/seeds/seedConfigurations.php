@@ -13,26 +13,39 @@ class seedConfigurations extends Seeder
     {
         $lengths = \App\length::all();
         $widths = \App\width::all();
-        $models = \App\boat_model::all();
+        $wides = \App\boat_model::where('hull_style_id','>',1)->get();
+        $narrows = \App\boat_model::where('hull_style_id','=',1)->get();
         $trims	= \App\trim_level::all();
 
-        foreach($models as $m){
+        foreach($wides as $m){
 	        foreach($lengths as $l){
-	        	foreach($widths as $w){
-	        		foreach($trims as $t){
+        		foreach($trims as $t){
 
-	        			\App\configuration::create(
-	        				['description'=>$m->name.' '.$t->name.' '.$l->feet.' x '.$w->feet,
-	        				'trim_level_id'=>$t->id,
-	        				'boat_model_id'=>$m->id,
-	        				'length_id'=>$l->id,
-	        				'width_id'=>$w->id,
-	        				'base_price_ex_vat'=>10000]
-	        			);
+        			\App\configuration::create(
+        				['description'=>$m->name.' '.$t->name.' '.$l->feet.' x 12',
+        				'trim_level_id'=>$t->id,
+        				'boat_model_id'=>$m->id,
+        				'length_id'=>$l->id,
+        				'width_id'=>2,
+        				'base_price_ex_vat'=>10000]
+        			);
+        		}
+        	}
+	   	}
 
+	   	foreach($narrows as $m){
+	        foreach($lengths as $l){
+        		foreach($trims as $t){
 
-	        		}
-	        	}
+        			\App\configuration::create(
+        				['description'=>$m->name.' '.$t->name.' '.$l->feet.' x 6ft10',
+        				'trim_level_id'=>$t->id,
+        				'boat_model_id'=>$m->id,
+        				'length_id'=>$l->id,
+        				'width_id'=>1,
+        				'base_price_ex_vat'=>10000]
+        			);
+        		}
 	        }
 	   	}
     }

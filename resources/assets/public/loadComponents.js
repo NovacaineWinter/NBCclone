@@ -3,7 +3,7 @@
 
 import  './components/boatSelector/bootstrap.js';
 import  './components/core/bootstrap.js';
-import  './components/stockBoats/bootstrap.js';
+//import  './components/stockBoats/bootstrap.js';
 import  './components/contactForm/bootstrap.js';
 
 

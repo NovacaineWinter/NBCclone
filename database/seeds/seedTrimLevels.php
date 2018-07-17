@@ -18,10 +18,7 @@ class seedTrimLevels extends Seeder
         	'comparison'=>'The Freedom offers you the opportunity to get a fully fitted boat for the lowest cost, ideal first homes',
         	'long_description'=>'The freedom trim level offers a complete fully fitted boat equiped for liveaboard life at the lowest cost']
         );
-        $a->fileConnection()->create(['src'=>'/img/nbcDefault.png','is_image'=>true]);
-        $a->fileConnection()->create(['src'=>'/img/nbcDefault.png','is_image'=>true]);
-        $a->fileConnection()->create(['src'=>'/img/nbcDefault.png','is_image'=>true]);
-        $a->fileConnection()->create(['src'=>'/img/nbcDefault.png','is_image'=>true]);
+        $a->fileConnection()->create(['src'=>'/img/freedom.png','is_image'=>true]);
         $a->primary_image_id = $a->images()->first()->id;
         $a->save();
 
@@ -32,11 +29,7 @@ class seedTrimLevels extends Seeder
         	'comparison'=>'The Lifestyle trim level gives you additional fitted furniture and equipment',
         	'long_description'=>'The Lifestyle trim level offers greater equipment and furniture, fitted furniture everywhere']
         );        
-        $b->fileConnection()->create(['src'=>'/img/nbcDefault.png','is_image'=>true]);
-        $b->fileConnection()->create(['src'=>'/img/nbcDefault.png','is_image'=>true]);
-        $b->fileConnection()->create(['src'=>'/img/nbcDefault.png','is_image'=>true]);
-        $b->fileConnection()->create(['src'=>'/img/nbcDefault.png','is_image'=>true]);
-        $b->fileConnection()->create(['src'=>'/img/nbcDefault.png','is_image'=>true]);
+        $b->fileConnection()->create(['src'=>'/img/lifestyle.png','is_image'=>true]);
         $b->primary_image_id = $b->images()->first()->id;
         $b->save();
 
@@ -47,10 +40,7 @@ class seedTrimLevels extends Seeder
         	'comparison'=>'The premier offers nothing but the very best. Beautiful materials and amazing equipment',
         	'long_description'=>'Exceptional fitout, nothing left to chance.']
         );
-        $c->fileConnection()->create(['src'=>'/img/nbcDefault.png','is_image'=>true]);
-        $c->fileConnection()->create(['src'=>'/img/nbcDefault.png','is_image'=>true]);
-        $c->fileConnection()->create(['src'=>'/img/nbcDefault.png','is_image'=>true]);
-        $c->fileConnection()->create(['src'=>'/img/nbcDefault.png','is_image'=>true]);
+        $c->fileConnection()->create(['src'=>'/img/premier.png','is_image'=>true]);
         $c->primary_image_id = $c->images()->first()->id;
         $c->save();
 

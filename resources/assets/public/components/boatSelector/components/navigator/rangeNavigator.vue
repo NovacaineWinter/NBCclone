@@ -146,8 +146,14 @@
 
                 }else{
                 	this.shared.chosen.choices.active_selector='finished';
-                	alert('finished config');
-                }
+                	this.shared.chosen.configuration_complete = true;
+                	//alert('finished config');
+                	this.shared.chosen.detail = this.shared.chosen.choices.boat_model;
+
+                	if(!this.shared.chosen.suppressForward){
+                		this.$router.push('/detail');
+               		}
+               	}
             },
 
 
@@ -172,6 +178,7 @@
         	},
         	trimChosen(trim){
         		this.shared.chosen.choices.trim_level=trim;
+        		this.shared.chosen.suppressForward = false;
         		this.identifyNextChoice();
         	},
 
@@ -195,7 +202,7 @@
 
         data: function() {
 		    return{		    	
-		        shared:boatSelector,	        
+		        shared:boatSelector,	   
 		      }
 	    },	 	
     };

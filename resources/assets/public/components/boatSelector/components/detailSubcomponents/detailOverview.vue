@@ -12,7 +12,7 @@
                 </carousel>                     
             </div>
         </div>
-        <div class="columns">
+        <div class="columns infobites">
             <div class="column has-text-centered" v-html="imported.chosen.detail.long_description"></div>
         </div>
 

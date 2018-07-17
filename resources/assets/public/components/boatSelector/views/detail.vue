@@ -4,9 +4,7 @@
 		<section class="hero is-info is-medium">
 			<div class="hero-body">
 				<div class="container">
-					<h1 class="title">
-						{{ imported.chosen.detail.name }}
-					</h1>
+					<h1 class="title"  v-text="bannerTitle"></h1>
 					<h2 class="subtitle">
 						{{ imported.chosen.detail.short_description }}
 					</h2>
@@ -27,7 +25,7 @@
 			<div class="header-for-detail is-fullwidth">
 				
 				<div class="tabs is-right navbar">
-					<h1 class="title">{{ imported.chosen.detail.name }}</h1>
+					<h1 class="title" v-text="bannerTitle"></h1>
 					<ul>
 						<router-link to="/detail/downloads" tag="li" class="is-active navborder pointer"><span>Download Specification</span></router-link>
 					</ul>
@@ -39,7 +37,7 @@
 					<router-link to="/detail" tag="li" exact><a><span>Overview</span></a></router-link>
 					<router-link to="/detail/gallery" tag="li" exact><a><span>Gallery</span></a></router-link>
 					<router-link to="/detail/downloads" tag="li" exact><a><span>Downloads</span></a></router-link>
-					<router-link to="/book-a-visit" tag="li" class="visit-us" exact><a><span>Book a Visit</span></a></router-link>
+					<router-link to="/contact-us" tag="li" class="visit-us" exact><a><span>Contact us</span></a></router-link>
 				</ul>
 			</div>
 		
@@ -59,9 +57,20 @@
     export default {
 
 	    mounted() {
+
 	       setTimeout(() => {
 		        window.scrollTo(0, 0);
 		    }, 100);
+
+	       	this.imported.chosen.suppressForward = true;
+
+			this.imported.raw.generic[0].infobites.forEach(infobite =>{ this.imported.chosen.detail.infobites.push(infobite) }
+
+				/*function(infobite){
+					this.imported.chosen.detail.infobites.push(infobite)
+				}*/
+			);
+
 	    },
         data() {
 		    return{
@@ -71,6 +80,15 @@
 	    computed:{
 	    	carouselImages(){
 	    		return _.filter(this.imported.chosen.detail.images,{is_in_carousel:1});
+	    	},
+	    	bannerTitle(){
+	    		if(this.imported.chosen.configuration_complete){
+	    			let choices = this.imported.chosen.choices;
+
+	    			return choices.boat_model.name+' '+choices.trim_level.name+' '+choices.loa.feet+'x'+choices.beam.feet;
+	    		}else{
+	    			return this.imported.chosen.detail.name;
+	    		}
 	    	},
 	    }
 

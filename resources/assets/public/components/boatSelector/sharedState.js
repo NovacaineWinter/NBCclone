@@ -30,6 +30,8 @@ var boatSelector = {
 	},
 	chosen:{
 		detail:'singleObject',
+		suppressForward:false,
+		configuration_complete:false,
 		helpMeChoose:{
 			items:{},
 			topic:''
