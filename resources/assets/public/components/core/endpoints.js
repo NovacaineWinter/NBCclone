@@ -6,6 +6,8 @@ var endpoints = [];
 endpoints.someEndpoint = '/some/endpoint/for/api';
 
 
+endpoints.cookies = '/vue/cookies';
+
 /*Example Endpoint*/
 /**/
 /**/	//endpoints.example = '/my/endpoint/on/server';

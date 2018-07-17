@@ -52,7 +52,6 @@
 <script>
 
     import endpoints from '../../endpoints.js';
-    import router from '../../../../setup/router.js';
     import boatSelector from '../../sharedState.js';
 
     export default {
@@ -77,7 +76,7 @@
         methods:{
             hullChosen(hull){
                 this.shared.chosen.choices.hull_style=hull;
-                router.push('/range');
+                //this.$router.push('/range');
             },
             helpChooseHull(){
                 this.shared.chosen.helpMeChoose.topic = 'Hull Style';

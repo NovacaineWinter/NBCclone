@@ -13,7 +13,7 @@
             </div>
         </div>
         <div class="columns">
-            <div class="column has-text-centered">{{ imported.chosen.detail.long_description }}</div>
+            <div class="column has-text-centered" v-html="imported.chosen.detail.long_description"></div>
         </div>
 
         <div class="infobites">

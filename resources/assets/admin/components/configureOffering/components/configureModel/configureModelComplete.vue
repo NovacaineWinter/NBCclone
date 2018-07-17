@@ -39,6 +39,8 @@
             </div>
         </section>
     
+    <section style="background-color:#cccccc;margin: 0px -24px;">&nbsp;</section> 
+    
     <!-- Image Manager -->
     <section class="section">
         <p class="title has-text-centered">Images</p>
@@ -84,7 +86,12 @@
         </div>
     </section>
 
-    
+    <section style="background-color:#cccccc;margin: 0px -24px;">&nbsp;</section> 
+
+
+    <section class="section">
+        <manage-info-bites :targetinfo="this.imported.modelToEdit" modelname="model"></manage-info-bites>
+    </section>
 
 
     <save-successful-banner v-if="successfullySaved" @enough="successfullySaved=false"></save-successful-banner>

@@ -25,6 +25,6 @@ Vue.component('save-unsuccessful-banner', require('./components/saveUnsuccessful
 Vue.component('new-image-modal', require('./components/newImageModal.vue'));
 
 
-Vue.component('info-bites', require('./components/infobites/infobite.vue'));
-Vue.component('new-info-bite', require('./components/infobites/newInfobite.vue'));
+Vue.component('info-bite', require('./components/infobites/infobite.vue'));
+Vue.component('new-infobite-modal', require('./components/infobites/newInfobite.vue'));
 Vue.component('manage-info-bites', require('./components/infobites/manageInfobites.vue'));

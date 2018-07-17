@@ -26,6 +26,14 @@ body{
 }
 
 
+ul.ul-visible{
+	list-style:initial;
+	list-style:disclosure-closed;
+	li{
+		margin-left:30px;
+	}
+}
+
 
 .is-branded{
 	background-color:$brand-secondary;

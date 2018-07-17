@@ -23,11 +23,11 @@ class vue extends Controller
 
     		case 'all-data':
     			$data['configurations'] =	\App\configuration::all();
-    			$data['hull_styles'] 	=	\App\hull_style::with('files','images','infobites')->get();
-    			$data['boat_models'] 	=	\App\boat_model::with('files','images','infobites')->get();
+    			$data['hull_styles'] 	=	\App\hull_style::with('files','images','infobites.fileConnection')->get();
+    			$data['boat_models'] 	=	\App\boat_model::with('files','images','infobites.fileConnection')->get();
     			$data['beams'] 		    =	\App\width::all();
     			$data['loas'] 		    =	\App\length::all();
-    			$data['trim_levels'] 	=	\App\trim_level::with('files','images','infobites')->get();
+    			$data['trim_levels'] 	=	\App\trim_level::with('files','images','infobites.fileConnection')->get();
     			return $data;
 
 
@@ -244,4 +244,78 @@ class vue extends Controller
             }
 
         }
+
+
+
+
+/*=======================================================================================================================================
+        *******************************************************************************************************************************
+=======================================================================================================================================*/
+
+
+
+    public function newInfobite(Request $request) {
+
+        $this->validate(request(),[
+            'file'          =>  'required|file',
+            'title'         =>  'required',
+            'description'   =>  'required',
+            'model'         =>  'required',
+            'target'        =>  'required'
+        ]);
+              
+        switch($request->get('model')){                    
+            case 'hull':
+                $toAddTo = \App\hull_style::find($request->get('target'));
+                break;
+
+            case 'model':
+                $toAddTo = \App\boat_model::find($request->get('target'));
+                break;
+
+            case 'trim':
+                $toAddTo = \App\trim_level::find($request->get('target'));
+                break;
+        }
+
+        $new = $toAddTo->newInfobite($request->file('file'), $request->get('title'),$request->get('description'));
+        /*$toReturn = \App\infobites::find($new->id)*/
+        return $new->with('fileConnection')->get();
+        //return 'ok';
+
+
+
+    }
+
+
+/*=======================================================================================================================================
+        *******************************************************************************************************************************
+=======================================================================================================================================*/
+
+
+    public function deleteInfobite(Request $request){
+        $this->validate(request(),[
+            'targetid'          =>  'required',
+        ]);
+
+        \App\infobites::find($request->get('targetid'))->delete();
+    }
+
+
+/*=======================================================================================================================================
+        *******************************************************************************************************************************
+=======================================================================================================================================*/
+
+
+    public function analytics(){
+        return view('tracking.nbc');
+    }
+
+
+
+
+/*=======================================================================================================================================
+        *******************************************************************************************************************************
+=======================================================================================================================================*/
+//end of class
 }

@@ -87,7 +87,7 @@
                     axios.post(endpoints.recieveMessage,this.payload)      
                         .then(response => {this.messageSending=false;this.messageSentOk=true})
 
-                        .catch(error => {this.errors.record(error.response.data.errors);this.messageSending=false;});
+                        .catch(error => {this.messageSending=false;/*this.errors.record(error.response.data.errors);*/});
 
                 }
             },

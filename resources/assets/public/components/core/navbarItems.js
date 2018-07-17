@@ -1,6 +1,6 @@
 import navbarItems from '../../setup/navbarItems';
 
-navbarItems.push(	
+/*navbarItems.push(	
 	{
 		uri:'/',
 		text:'Home',
@@ -13,4 +13,4 @@ navbarItems.push(
 		position:100,
 		boxed:false,
 	},
-);
+);*/

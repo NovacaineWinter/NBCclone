@@ -4,12 +4,8 @@ require('./routes.js');
 require('./navbarItems.js');
 
 
+/* Components */
+Vue.component('contact-form', require('./components/contactForm.vue'));
 
 
-    
-/**/
-/**/	/* Components */
-/**/	Vue.component('contact-form', require('./components/contactForm.vue'));
-/**/
-/**/
 

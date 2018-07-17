@@ -10,7 +10,7 @@
 
 	    <router-link to="range" tag="article" @click.native="$emit('selected',info)" class="tile is-child notification pointer box">
 	        <p class="title">{{ info.name }}</p>
-			<p class="subtitle">{{ info.comparison }}</p>
+			<p class="subtitle" v-html="info.comparison"></p>
 			<div class="button is-pulled-right">Select ></div>
 		</router-link>
 	    </article>

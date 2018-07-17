@@ -16,6 +16,9 @@ endpoints.deleteImage = '/vue/update/delete-image';
 endpoints.newImage = '/vue/update/new-image';
 endpoints.updateImage = '/vue/update/image';
 
+endpoints.newInfobite = '/vue/update/new-infobite';
+endpoints.deleteInfobite = '/vue/delete/infobite';
+
 
 export default endpoints;
 

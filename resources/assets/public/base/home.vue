@@ -245,7 +245,7 @@
 				<div class="columns">					
 					<div class="column">
 					
-						<div 
+						<!-- <div 
 							class="fb-page" 
 							data-href="https://www.facebook.com/NottinghamBoatCompany/" 
 							data-tabs="timeline" 
@@ -256,7 +256,7 @@
 								<blockquote cite="https://www.facebook.com/NottinghamBoatCompany/" class="fb-xfbml-parse-ignore">
 									<a href="https://www.facebook.com/NottinghamBoatCompany/">Nottingham Boat Company</a>
 								</blockquote>
-						</div>
+						</div> -->
 
 					</div>
 					<div class="column is-8">

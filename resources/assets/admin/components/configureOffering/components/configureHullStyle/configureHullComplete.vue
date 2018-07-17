@@ -35,7 +35,7 @@
         </div>
     </section>
 
-
+<section style="background-color:#cccccc;margin: 0px -24px;">&nbsp;</section> 
     
     <!-- Image Manager -->
     <section class="section">
@@ -82,9 +82,9 @@
         </div>
     </section>
 
-
+<section style="background-color:#cccccc;margin: 0px -24px;">&nbsp;</section> 
     <section class="section">
-        <info-bites :targetinfo="this.imported.hullToEdit" modelname="hull"></info-bites>
+        <manage-info-bites :targetinfo="this.imported.hullToEdit" modelname="hull"></manage-info-bites>
     </section>
 
     <save-successful-banner v-if="successfullySaved" @enough="successfullySaved=false"></save-successful-banner>

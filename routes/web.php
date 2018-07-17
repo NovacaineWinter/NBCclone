@@ -29,6 +29,7 @@
 
 	/* Data retrival endpoints */
 		Route::get('/vue/data/{target}','vue@data');
+		Route::get('/vue/cookies','vue@analytics');
 	
 
 	/*Updating endpoints*/
@@ -39,6 +40,12 @@
 		Route::get('/vue/update/delete-image','vue@deleteImage');
 		Route::post('/vue/update/new-image','vue@newImage');
 		Route::get('/vue/update/image','vue@updateImage');
+		Route::post('/vue/update/new-infobite','vue@newInfobite');
+
+
+	/* Deleting endpoints */
+
+	Route::delete('/vue/delete/infobite','vue@deleteInfobite');
 
 
 

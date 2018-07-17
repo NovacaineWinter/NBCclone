@@ -5,13 +5,13 @@ import routes from '../../setup/setupRoutes';
 
 routes.push(
 	{
-		path:'/dataprotection',
+		path:'/data-protection',
 
 		component: require('./views/dataProtection.vue')
 	},
 
 	{
-		path:'/cookiePolicy',
+		path:'/cookie-policy',
 
 		component: require('./views/cookiePolicy.vue')
 	},

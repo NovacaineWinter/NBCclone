@@ -1,38 +1,40 @@
 		
 <template>
+	<div>
+		<cookie-banner></cookie-banner>
+		<nav class="navbar is-fixed-top">
+		    
+		    <div class="navbar-burger burger">
 
-	<nav class="navbar is-fixed-top">
-	    
-	    <div class="navbar-burger burger">
+		    	<router-link 
+		    		v-for="(item, index) in items" 
+		    		:key="index" 
+		    		:to="item.uri" 
+		    		tag="span"
+		    		exact>
+		    			{{ item.text }}
+		    	</router-link>	        
+		       
+		    </div>
 
-	    	<router-link 
-	    		v-for="(item, index) in items" 
-	    		:key="index" 
-	    		:to="item.uri" 
-	    		tag="span"
-	    		exact>
-	    			{{ item.text }}
-	    	</router-link>	        
-	       
-	    </div>
+		    <div class="navbar-end">
+		        <div class="navbar-start">
 
-	    <div class="navbar-end">
-	        <div class="navbar-start">
+		        	<router-link  
+		        		v-for="(item, index) in items"
+		        		:class="item.bold ? 'navbar-item navborder' : 'navbar-item'" 	        		 
+		        		:key="index" 
+		        		v-bind:to="item.uri" 
+		        		tag="span"
+		        		exact>
+		        			<span>{{ item.text }}</span>
+		        	</router-link>	
 
-	        	<router-link  
-	        		v-for="(item, index) in items"
-	        		:class="item.bold ? 'navbar-item navborder' : 'navbar-item'" 	        		 
-	        		:key="index" 
-	        		v-bind:to="item.uri" 
-	        		tag="span"
-	        		exact>
-	        			<span>{{ item.text }}</span>
-	        	</router-link>	
+		        </div>
+		    </div>  
 
-	        </div>
-	    </div>  
-
-	</nav>
+		</nav>
+	</div>
 
    
 </template>

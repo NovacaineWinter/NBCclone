@@ -11,7 +11,7 @@ class contactController extends Controller
     	$this->validate(request(),[
     		'fname'		=>	'required',
     		'lname'		=>	'required',
-    		'email'		=>	'required',
+    		'email'		=>	'required|email',
     		'message'	=>	'required'
     	]);
 
@@ -23,6 +23,6 @@ class contactController extends Controller
     	]);
     	$message->sendEmail();
 
-    	return ['message' => 'Message Sent'];
+    	return 'ok';
     }
 }

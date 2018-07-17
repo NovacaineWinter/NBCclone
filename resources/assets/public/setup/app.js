@@ -8,7 +8,8 @@ import router from './router';
 */ 
 const app = new Vue({
     el: '#app',
-    data: {    	
+    data: {    
+    acceptedCookies:false,	
     },
     router: router,
 

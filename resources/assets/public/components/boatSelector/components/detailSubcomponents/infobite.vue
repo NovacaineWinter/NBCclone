@@ -8,9 +8,7 @@
     		<article class="tile is-child is-primary">
 				<div class="card">
 					<div class="card-image">
-						<figure class="image is-4by3">
-							<img :src="infobite.src" alt="Placeholder image">
-						</figure>
+						<figure class="image is-4by3 nosquash" :style="stylingrule"></figure>
 					</div>
 				</div>
     		</article>
@@ -29,9 +27,7 @@
     		<article class="tile is-child is-primary">
 				<div class="card">
 					<div class="card-image">
-						<figure class="image is-4by3">
-							<img :src="infobite.src" alt="Placeholder image">
-						</figure>
+						<figure class="image is-4by3 nosquash" :style="stylingrule"></figure>
 					</div>
 				</div>
     		</article>
@@ -46,34 +42,28 @@
     //import endpoints from '../endpoints.js';   //relative path - beware
 
     export default {
-    	/*
+    	
         mounted() {        	
             
-            axios.get(endpoints.someEndpoint)            
-                .then(handleResponse.bind('data',this))
-
-                .catch(function (error) {
-                    console.log(error);            
-                });
-
-                function handleResponse(context,response){
-                    //context is an alias for 'this'
-                    context.someDataOnThis = response.data;
-                }
+         console.log();
         },
-
+/*
         methods:{
             myMethod(){
                 console.log('my method triggered');
             },
         },
-
+*/
         computed:{
-        	someNumber(){
-        		return 2+3;
-        	},        	
-        },
+        	imageSrc(){
+        		return _.filter(this.infobite.file_connection,['is_image',1])[0].src;
+        	},  
 
+            stylingrule(){
+                return "background-image:url('"+this.imageSrc+"')";
+            },      	
+        },
+/*
         data: function() {
 		    return{
 		        someDataOnThis:'',		        

@@ -18,7 +18,6 @@ class CreateInfobitesTable extends Migration
             $table->integer('owner_id');
             $table->string('owner_type');
             $table->string('title',100);
-            $table->string('src');
             $table->string('description',2000);            
             $table->timestamps();
         });

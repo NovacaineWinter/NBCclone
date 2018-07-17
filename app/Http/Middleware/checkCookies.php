@@ -15,10 +15,10 @@ class checkCookies
      */
     public function handle($request, Closure $next)
     {
-            if($request->cookie('acceptCookies') !== null){
-                \Illuminate\Support\Facades\View::share('cookiesOk', true);
+            if($request->cookie('noTrack') !== null){
+                \Illuminate\Support\Facades\View::share('noTrack', true);
             }else{
-                \Illuminate\Support\Facades\View::share('cookiesOk', false);
+                \Illuminate\Support\Facades\View::share('noTrack', false);
             }
         return $next($request);
     }

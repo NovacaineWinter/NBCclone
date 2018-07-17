@@ -11529,6 +11529,15 @@ body {
   background-color: #cccccc;
 }
 
+ul.ul-visible {
+  list-style: initial;
+  list-style: disclosure-closed;
+}
+
+ul.ul-visible li {
+  margin-left: 30px;
+}
+
 .is-branded {
   background-color: #122134;
   color: #fafafa;

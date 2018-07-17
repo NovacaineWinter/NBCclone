@@ -5,9 +5,9 @@ require('./navbarItems.js');
 
 /**/
 /**/	/* Components */
-/**/	Vue.component('example-component', require('./components/exampleComponent.vue'));
+/**/	Vue.component('cookie-banner', require('./components/cookieBanner.vue'));
 /**/
 /**/	/* Subcomponents */
-/**/	Vue.component('example-subcomponent', require('./subcomponents/exampleSubcomponent.vue'));
+/**/	//Vue.component('example-subcomponent', require('./subcomponents/exampleSubcomponent.vue'));
 /**/
 
