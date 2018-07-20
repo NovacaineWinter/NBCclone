@@ -86,21 +86,22 @@
 				<div class="tile is-parent">
 					<article class="tile is-child">
 
-						<router-link tag="div" class="card hoverable full-height" to="/stock">
+						<router-link tag="div" class="card hoverable full-height" to="/range">
 
 							<div class="card-image">
 								<figure class="image is-4by3">
-									<img src="/img/sunsetriver2.jpg" alt="photo of river at sunset">								
+									<img src="/img/range.jpg" alt="photo of river at sunset">								
 								</figure>
 							</div>
 							<div class="card-content">
 								<div class="media">			
 									<div class="media-content">
-										<p class="title">Life aboard</p>				
+										<p class="title">Our Range Of Boats</p>				
 									</div>
 								</div>
 								<div class="content">
-									The exquisite lifestyle onboard a luxury boat is one of the best kept secrets, find out all the reasons why you should get get out on the water	>
+									<!-- The exquisite lifestyle onboard a luxury boat is one of the best kept secrets, find out all the reasons why you should get get out on the water	> -->
+									Explore our range of amazing boats. Built to your exacting specifications, you can be sure to find your ideal boat here >
 								</div>
 							</div>
 
@@ -112,11 +113,11 @@
 
 				<div class="tile is-parent">
 					<article class="tile is-child">				        
-						<router-link tag="div" class="card hoverable full-height" to="/range">
+						<router-link tag="div" class="card hoverable full-height" to="/contact-us">
 
 							<div class="card-image">
 								<figure class="image is-4by3">
-									<img src="http://via.placeholder.com/640x465" alt="Placeholder image">
+									<img src="/img/unit.jpg" alt="Placeholder image">
 								</figure>
 							</div>
 
@@ -135,6 +136,8 @@
 						</router-link>
 					</article>
 				</div>
+
+
 
 			</div>			
 		</section>
@@ -245,7 +248,7 @@
 				<div class="columns">					
 					<div class="column">
 					
-						<!-- <div 
+						<div 
 							class="fb-page" 
 							data-href="https://www.facebook.com/NottinghamBoatCompany/" 
 							data-tabs="timeline" 
@@ -256,7 +259,7 @@
 								<blockquote cite="https://www.facebook.com/NottinghamBoatCompany/" class="fb-xfbml-parse-ignore">
 									<a href="https://www.facebook.com/NottinghamBoatCompany/">Nottingham Boat Company</a>
 								</blockquote>
-						</div> -->
+						</div>
 
 					</div>
 					<div class="column is-8">

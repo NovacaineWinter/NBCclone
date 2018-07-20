@@ -76,7 +76,7 @@
         methods:{
             hullChosen(hull){
                 this.shared.chosen.choices.hull_style=hull;
-                //this.$router.push('/range');
+                this.$router.push('/range');
             },
             helpChooseHull(){
                 this.shared.chosen.helpMeChoose.topic = 'Hull Style';

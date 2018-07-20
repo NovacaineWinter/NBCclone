@@ -1,7 +1,7 @@
 		
 <template>
 	<!-- Begin Template -->
-    <stock-boat-detail></stock-boat-detail>
+    <all-stock-boats></all-stock-boats>
 
 </template>
 

@@ -1,48 +1,51 @@
 		
 <template>
-	<!-- Begin Template -->
+	<div class="container">
+     <section class="section">
+         <div class="columns is-multiline">
+             <stock-boat-card v-for="boat in stock_boats" @chosen="setTargetStockBoat" :boat="boat" :key="boat.id"></stock-boat-card>
+         </div>
+     </section>           
+     
+    </div>
    
 </template>
 
 <script>
 
-    //import endpoints from '../endpoints.js';   //relative path - beware
+    import endpoints from '../../endpoints.js';  
+    import stockTarget from '../../sharedState.js';
+
 
     export default {
-    	/*
+    	
         mounted() {        	
             
-            axios.get(endpoints.someEndpoint)            
-                .then(handleResponse.bind('data',this))
+            axios.get(endpoints.allStockBoats)            
+                .then(response => {this.stock_boats = response.data})
 
-                .catch(function (error) {
-                    console.log(error);            
-                });
-
-                function handleResponse(context,response){
-                    //context is an alias for 'this'
-                    context.someDataOnThis = response.data;
-                }
+                .catch(error => {console.log(error.error)});               
         },
 
         methods:{
-            myMethod(){
-                console.log('my method triggered');
+            setTargetStockBoat(boat){
+                this.theTarget.info=boat;
             },
         },
-
+/*
         computed:{
         	someNumber(){
         		return 2+3;
         	},        	
         },
-
+*/
         data: function() {
 		    return{
-		        someDataOnThis:'',		        
-		      }
+                stock_boats:{},
+                theTarget:stockTarget		        
+            }
 	    },
-
+/*
 	    props: [
 		    'propsPassed'
 	    ], */

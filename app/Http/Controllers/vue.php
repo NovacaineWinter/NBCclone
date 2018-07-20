@@ -28,7 +28,7 @@ class vue extends Controller
     			$data['beams'] 		    =	\App\width::all();
     			$data['loas'] 		    =	\App\length::all();
     			$data['trim_levels'] 	=	\App\trim_level::with('files','images','infobites.fileConnection')->get();
-                $data['generic']        =   \App\generic::find(1)->with('infobites.fileConnection')->get();
+                $data['generic']        =   \App\generic::find(1)->with('infobites.fileConnection')->get();                
     			return $data;
 
 
@@ -312,6 +312,16 @@ class vue extends Controller
         return view('tracking.nbc');
     }
 
+
+
+
+/*=======================================================================================================================================
+        *******************************************************************************************************************************
+=======================================================================================================================================*/
+
+    public function allStockBoats(){
+        return \App\stock_boat::all();
+    }
 
 
 

@@ -11,3 +11,13 @@ require('./navbarItems.js');
 
 	/*	Stock boat detail	*/
 	Vue.component('stock-boat-detail', require('./components/detail/stockBoatDetailComponent.vue'));
+		//subcomponents
+		Vue.component('stock-detail-overview', require('./components/detail/subcomponents/stockOverview.vue'));
+		Vue.component('stock-detail-gallery', require('./components/detail/subcomponents/stockGallery.vue'));
+		Vue.component('stock-detail-downloads', require('./components/detail/subcomponents/stockDownloads.vue'));
+		
+
+
+
+
+

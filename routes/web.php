@@ -30,6 +30,7 @@
 	/* Data retrival endpoints */
 		Route::get('/vue/data/{target}','vue@data');
 		Route::get('/vue/cookies','vue@analytics');
+		Route::get('/vue/data/stock-boats','vue@allStockBoats');
 	
 
 	/*Updating endpoints*/

@@ -1,7 +1,6 @@
-/*
-var somethingToShare = {
 
+var stockTarget = {
+	info:{}
 };
 
-export default somethingToShare;
-*/
+export default stockTarget;
