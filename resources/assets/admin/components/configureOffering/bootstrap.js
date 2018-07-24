@@ -28,3 +28,7 @@ Vue.component('new-image-modal', require('./components/newImageModal.vue'));
 Vue.component('info-bite', require('./components/infobites/infobite.vue'));
 Vue.component('new-infobite-modal', require('./components/infobites/newInfobite.vue'));
 Vue.component('manage-info-bites', require('./components/infobites/manageInfobites.vue'));
+
+
+Vue.component('stock-boat-card', require('./components/stockBoats/stockBoatCard.vue'));
+Vue.component('configure-stock-boat', require('./components/stockBoats/configureStockBoat.vue'));

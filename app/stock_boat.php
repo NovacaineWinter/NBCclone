@@ -29,4 +29,16 @@ class stock_boat extends Model
     public function infoBites(){
         return $this->morphMany('App\infobites','owner');
     }
+
+    public function newImage($img){
+
+        //needs to return the new image object        
+        $path =$img->store('public');
+        
+        return $this->fileConnection()->create([
+            'src' => \Storage::url($path),
+            'asset'=>$path,
+            'is_image'=>true,
+        ]);
+    }   
 }

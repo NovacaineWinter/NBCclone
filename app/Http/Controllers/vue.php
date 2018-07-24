@@ -121,6 +121,23 @@ class vue extends Controller
                     break;                       
 
 
+
+
+                case 'stockBoat':
+                    if($request->has('target')){
+                        $info = json_decode($request->get('target'),true);
+                        if(isset($info['id'])){
+                            $stockBoat = \App\stock_boat::find($info['id']);
+                            $stockBoat->title = $info['title'];
+                            $stockBoat->description = $info['description'];
+                            $stockBoat->short_summary = $info['short_summary'];
+                            $stockBoat->primary_image_id = $info['primary_image_id'];
+                            //$stockBoat-> = $info[''];
+                            $stockBoat->save();
+                            return 'ok';
+                        }else{abort(501);}
+                    }else{abort(501);}
+                    break;
                 }       
             }else{abort(501);}
         }
@@ -189,6 +206,10 @@ class vue extends Controller
 
                     case 'trim':
                         $toAddTo = \App\trim_level::find($request->get('target'));
+                        break;
+
+                    case 'stockBoat':
+                        $toAddTo = \App\stock_boat::find($request->get('target'));
                         break;
                 }
 

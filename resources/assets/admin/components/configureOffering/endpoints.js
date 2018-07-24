@@ -20,6 +20,9 @@ endpoints.newInfobite = '/vue/update/new-infobite';
 endpoints.deleteInfobite = '/vue/delete/infobite';
 
 
+endpoints.stockBoats = '/vue/data/stock-boats';
+endpoints.updateStockBoat = '';
+
 export default endpoints;
 
 
