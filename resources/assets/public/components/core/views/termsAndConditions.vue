@@ -26,7 +26,25 @@
                 </div>                
             </div>
 
+            <div class="tile is-parent">
+                <div class="card is-child">
+                    <header class="card-header">
+                        <p class="card-header-title">
+                            Deposit Agreement
+                        </p>
+                    </header>
 
+                    <div class="card-content">
+                        <div class="content">
+                            Our terms for placing a non-refundable deposit
+                        </div>
+                    </div>
+
+                    <footer class="card-footer">
+                        <a href="/docs/depositAgreement.pdf" class="card-footer-item">Download</a>  
+                    </footer>
+                </div>
+            </div>
            
 
         </div>
