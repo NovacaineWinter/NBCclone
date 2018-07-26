@@ -12,6 +12,7 @@
 					            <router-link tag="li" to="/data-protection" class="navbar-item" exact><span>Data Protection</span></router-link>
 					            <router-link tag="li" to="/cookie-policy" class="navbar-item" exact><span>Cookie Policy</span></router-link>            
 					            <router-link tag="li" to="/settings" class="navbar-item" exact><span>Settings</span></router-link> 
+					            <router-link tag="li" to="/terms-of-business" class="navbar-item" exact><span>Terms of Business</span></router-link> 
 			            	</ul>
 			            </div>
 			            <!-- 
