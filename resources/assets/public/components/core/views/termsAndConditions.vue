@@ -64,7 +64,28 @@
                         <a href="/docs/depositInvoice.pdf" class="card-footer-item">Download</a>  
                     </footer>
                 </div>
-            </div>     
+            </div>
+
+
+            <div class="tile is-parent">
+                <div class="card is-child">
+                    <header class="card-header">
+                        <p class="card-header-title">
+                           Example Boat Purchase Agreement
+                        </p>
+                    </header>
+
+                    <div class="card-content">
+                        <div class="content">
+                            Example of the purchase agreement you will enter into when buying a boat from us
+                        </div>
+                    </div>
+
+                    <footer class="card-footer">
+                        <a href="/docs/purchaseAgreement.pdf" class="card-footer-item">Download</a>  
+                    </footer>
+                </div>
+            </div>                 
 
         </div>
 
