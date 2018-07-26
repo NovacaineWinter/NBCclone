@@ -58,7 +58,7 @@
 
 				<div class="tile is-parent">
 					<article class="tile is-child">
-						<router-link tag="div" class="card hoverable full-height" to="/range">
+						<router-link tag="div" class="card hoverable full-height" to="/stock">
 
 							<div class="card-image">
 								<figure class="image is-4by3">

@@ -20,10 +20,11 @@ routes.push(
 
 		component: require('./views/settings.vue')
 	},
-	/*{
+	{
 		path:'/terms-of-business',
 
 		component: require('./views/termsAndConditions.vue')
-	},		*/
+	},
 );
+
 

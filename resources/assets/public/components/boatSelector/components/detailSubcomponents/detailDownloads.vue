@@ -24,6 +24,11 @@
             </div>
             <div class="column is-4"></div>
         </div> 
+        <div class="has-text-centered">
+            <router-link to="/terms-of-business" tag="a" class="subtitle">Be sure to check out our Terms of Business Page</router-link>
+            <br>
+            <router-link to="/terms-of-business" tag="a" class="button is-info is-outlined">Terms Of Business</router-link>
+        </div>
         
     </div>
 
