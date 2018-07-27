@@ -10,7 +10,7 @@
 	    		
 
 	        <div class="card-image">
-        		<figure class="image is-4by3 nosquash"  v-bind:style="stylingRule"></figure>
+        		<figure class="image is-4by3 nosquash" :style="stylingRule"></figure>
 	        </div>
 
 	        <div class="card-content">
@@ -109,9 +109,15 @@
 			
 		}
 		.card-content{
-			margin-bottom:60px;
+			padding-bottom:60px;
 		}
+		
 
+	}
+	@media only screen and (max-width: $small-screen){
+		.detailcard{
+			max-width:100%;
+		}
 	}
 </style>
 

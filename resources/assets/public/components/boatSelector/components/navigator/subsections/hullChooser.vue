@@ -6,13 +6,13 @@
 	        <div class="tile is-vertical is-ancestor">
 
 	            <div class="tile is-parent">
-	                <article class="tile is-child notification is-warning">
+	                <article class="tile is-child notification is-warning helpmechoosecontainer">
 	                    <p class="title">
 	                    	Choose a Hull Style 
 	                    	<router-link 
 	                    		to="/help-me-choose" 
 	                    		@click.native="helpChooseHull" 
-	                    		class="button is-pulled-right">
+	                    		class="button is-pulled-right helpmechoosebutton">
 	                    			Help me choose
 	                    	</router-link></p>
 	                </article>
@@ -58,8 +58,21 @@
 
 
 <style lang="scss">
-   //@import "resources/assets/sass/variables.scss";
-
+    @import '~sass/variables';
+    
+    @media only screen and (max-width: $small-screen){
+        .helpmechoosecontainer{
+            padding-bottom:60px;
+        }
+        .helpmechoosebutton{
+            width: 100%;
+            position: relative;
+            top: 40px;
+            background-color: $brand-primary;
+            color:$text-light;
+            font-weight:900;
+        }
+    }
 </style>
 
 		

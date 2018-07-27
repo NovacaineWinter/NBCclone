@@ -23,7 +23,13 @@
 </script>
 
 <style lang="scss">
+    @import '~sass/variables';
 	.numbercard{
 		max-width:25%;
+	}
+	@media only screen and (max-width: $small-screen){
+		.numbercard{
+			max-width:100%;
+		}
 	}
 </style>

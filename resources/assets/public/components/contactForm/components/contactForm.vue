@@ -129,16 +129,18 @@
 <style lang="scss">
     @import '~sass/variables';
     .contactform{
+        width:50%;
+        margin:auto;
         input{
             display:block;
-            width:50%;
+            width:100%;
             margin:20px auto; 
             font-size:16px;
 
         };
         textarea.textarea{
-            width:50%;
-            margin-left:25%;
+            width:100%;
+            margin-left:0%;
             display:block;
             min-width:20%;
         }
@@ -157,7 +159,11 @@
             margin-left:47%;
         }
     }
-
+@media only screen and (max-width: $small-screen){
+    .contactform{
+        width:80%;
+    }
+}
 </style>
 
 		

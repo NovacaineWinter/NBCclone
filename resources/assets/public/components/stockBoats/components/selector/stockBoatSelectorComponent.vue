@@ -30,6 +30,7 @@
         methods:{
             setTargetStockBoat(boat){
                 this.theTarget.info=boat;
+                this.$router.push('/stock/detail');
             },
         },
 /*

@@ -1,6 +1,6 @@
 		
 <template>
-	<div class="detailView">
+	<div class="stockDetailView">
 		<section class="hero is-info is-medium">
 			<div class="hero-body">
 				<div class="container">
@@ -12,7 +12,7 @@
 			</div>
 			<div class="hero-foot">
 				<nav class="tabs is-boxed">
-					<div class="container">
+					<div class="container backbuttoncontainer">
 						<ul>
 							<li @click="$router.go(-1)" class="is-active"><a>Back</a></li>							
 						</ul>
@@ -26,13 +26,13 @@
 				
 				<div class="tabs is-right navbar">
 					<h1 class="title" v-text="bannerTitle"></h1>
-					<ul>
+					<ul class="bigstuff">
 						<router-link to="/stock/detail/downloads" tag="li" class="is-active navborder pointer"><span>Download Specification</span></router-link>
 					</ul>
 				</div> 
 			</div>
 
-			<div class="tabs is-toggle is-fullwidth squarewhitesection" style="margin-bottom:0px;">
+			<div class="tabs is-toggle is-fullwidth squarewhitesection detailtabs" style="margin-bottom:0px;">
 				<ul>
 					<router-link to="/stock/detail" tag="li" exact><a><span>Overview</span></a></router-link>
 					<router-link to="/stock/detail/gallery" tag="li" exact><a><span>Gallery</span></a></router-link>
@@ -107,7 +107,12 @@
    		}
    }
 
-   .detailView{ 
+   .stockDetailView{ 
+		.detailtabs{
+			a{
+				padding:0.5em 0em;
+			}
+		}
    		.squarewhitesection{
 	   		background-color:$text-light;
 	   }
@@ -149,7 +154,11 @@
 
 	}
 
-
+@media only screen and (max-width: $medium-screen){
+	.backbuttoncontainer{
+		margin:0px;
+	}
+}
 </style>
 
 		

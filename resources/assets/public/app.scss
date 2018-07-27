@@ -106,3 +106,19 @@ ul.ul-visible{
 	cursor:pointer;
 }
 
+.smallstuff{
+	display:none;
+}
+.bigstuff{
+	display:initial;
+}
+
+
+@media only screen and (max-width: $small-screen){
+	.smallstuff{
+		display:initial;
+	}
+	.bigstuff{
+		display:none !important;
+	}
+}

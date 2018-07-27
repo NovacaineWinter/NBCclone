@@ -1,7 +1,7 @@
 		
 <template>
 
-    <router-link to="/stock/detail" tag="div" @click.native="$emit('chosen',boat)" class="tile is-parent stockcard is-4">
+    <div @click="$emit('chosen',boat)" class="tile is-parent stockcard is-4">
 
         <article class="tile is-child notification pointer is-info box card">
             <header class="card-header">
@@ -24,7 +24,7 @@
 
         </article>
 
-    </router-link>
+    </div>
 
    
 </template>
@@ -112,6 +112,12 @@
         }
 
     }
+
+@media only screen and (max-width: $small-screen){
+    .stockcard{
+        max-width:100%;
+    }
+}
 </style>
 
 		

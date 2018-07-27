@@ -21,7 +21,7 @@
 						</div>
 
 
-						<div class="tile is-4 is-vertical is-parent">
+						<div class="tile is-4 is-vertical is-parent bigstuff">
 
 							<router-link tag="div" class="tile is-child box is-info button" to="/range"><p>Explore Our Range</p></router-link>					
 
@@ -37,13 +37,17 @@
 		<section>
 			<div class="container section whitecontainer" id="firstSection">
 				<p class="has-text-centered subtitle">TRUST, INTEGRITY AND QUALITY</p>
-				<div class="columns">					
-					<div class="column has-text-centered"><img src="/img/partners/logos/bmf.jpg" alt="BMF logo" class="trustlogos"></div>
-					<div class="column has-text-centered"><img src="img/partners/logos/promarine.jpg" alt="promarine logo" class="trustlogos"></div>
-					<div class="column has-text-centered"><img src="/img/partners/logos/bmf2.jpg" alt="BMF logo 2" class="trustlogos"></div>
-					<div class="column has-text-centered"><img src="/img/partners/logos/cba.jpg" alt="CBA logo" class="trustlogos"></div>
-					<div class="column has-text-centered"><img src="/img/partners/logos/assistinsurance.jpg" alt="BMF logo " class="trustlogos"></div>
-					<div class="column has-text-centered"><img src="/img/partners/logos/crt.png" alt="CRT logo " class="trustlogos"></div>
+				<div class="columns">
+					<div class="column columns is-mobile">
+						<div class="column has-text-centered"><img src="/img/partners/logos/bmf.jpg" alt="BMF logo" class="trustlogos"></div>
+						<div class="column has-text-centered"><img src="img/partners/logos/promarine.jpg" alt="promarine logo" class="trustlogos"></div>
+						<div class="column has-text-centered"><img src="/img/partners/logos/bmf2.jpg" alt="BMF logo 2" class="trustlogos"></div>
+					</div>
+					<div class="column columns is-mobile">
+						<div class="column has-text-centered"><img src="/img/partners/logos/cba.jpg" alt="CBA logo" class="trustlogos"></div>
+						<div class="column has-text-centered"><img src="/img/partners/logos/assistinsurance.jpg" alt="BMF logo " class="trustlogos"></div>
+						<div class="column has-text-centered"><img src="/img/partners/logos/crt.png" alt="CRT logo " class="trustlogos"></div>
+					</div>
 				</div>		
 			</div>
 		</section>
@@ -113,7 +117,7 @@
 
 				<div class="tile is-parent">
 					<article class="tile is-child">				        
-						<router-link tag="div" class="card hoverable full-height" to="/contact-us">
+						<router-link tag="div" class="card hoverable full-height pointer" to="/contact-us">
 
 							<div class="card-image">
 								<figure class="image is-4by3">
@@ -354,7 +358,14 @@
 			padding:1.2vw;
 			font-weight:600;
 		}
-		
+
+	}
+
+
+	@media only screen and (max-width: $small-screen){
+		#homebanner h1{
+			font-size: 8vw;
+		}
 
 	}
 </style>

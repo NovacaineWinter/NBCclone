@@ -1,18 +1,18 @@
 	
 <template>
 
-    <section class="container section whitecontainer">
+    <section class="container section whitecontainer hullwiget">
 
         <div class="tile is-vertical is-ancestor">
 
             <div class="tile is-parent">
-                <article class="tile is-child notification is-warning">
+                <article class="tile is-child notification is-warning helpmechoosecontainer">
                     <p class="title">Our Range Of Styles</p>
                     <p class="subtitle">Each exquisitely tailored to suit your needs
                         <router-link 
                             to="/help-me-choose" 
                             @click.native="helpChooseHull" 
-                            class="button is-pulled-right">
+                            class="button is-pulled-right helpmechoosebutton">
                                 Help me choose
                         </router-link></p>
 
@@ -38,7 +38,7 @@
                 <router-link tag="article" to="/contact-us" class="tile is-child notification is-warning box">
                     <p class="title">Can't decide? Let us help you find the ideal boat</p>
                     <p class="subtitle">Contact Us - we love talking about boats and would love to help you find your perfect match</p>
-                    <div class="button is-pulled-right">Contact Us></div>
+                    <div class="button is-pulled-right hullwigetcontactbutton">Contact Us></div>
                 </router-link>
             </div> 
 
@@ -92,3 +92,30 @@
 
     };
 </script>
+
+
+<style lang="scss">
+    @import '~sass/variables';
+    
+    @media only screen and (max-width: $small-screen){
+        .helpmechoosecontainer{
+            padding-bottom:60px;
+        }
+        .helpmechoosebutton{
+            width: 100%;
+            position: relative;
+            top: 20px;
+            background-color: $brand-primary;
+            color:$text-light;
+            font-weight:900;
+        }
+        .hullwiget{
+            .hullwigetcontactbutton{
+                width: 100%;
+                background-color: $brand-primary;
+                margin-top: 0px !important;
+                color:$text-light;
+            }            
+        }
+    }
+</style>
