@@ -8,9 +8,7 @@
             <div class="column is-4" v-for="image in target.images">
                 <div class="card" @click="launchPopover(image)">
                     <div class="card-image">
-                        <figure class="image is-4by3">
-                            <img :src="image.src" :alt="image.description">
-                        </figure>
+                        <figure class="image is-4by3 nosquash" :style="stylingRule(image)"></figure>
                     </div>
                 </div>
             </div>
@@ -36,6 +34,9 @@
                 this.selectedImage =image,
                 this.modalShowing = true 
             },
+            stylingRule(image){
+                return "background-image:url('"+image.src+"');";
+            }
         },
 
 
