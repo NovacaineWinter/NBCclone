@@ -16,7 +16,7 @@
             <div class="column has-text-centered" v-html="target.long_description"></div>
         </div>
 
-        <a :href="target.virtual_tour" v-if="hasTour">
+        <a :href="target.virtual_tour" target="_blank" v-if="hasTour">
             <section  class="hero is-info pointer" style="margin: 0px -24px;">
                 <div class="hero-body">
                     <div class="infobites columns">
