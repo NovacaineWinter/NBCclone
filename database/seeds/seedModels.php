@@ -26,7 +26,9 @@ class seedModels extends Seeder
             'short_description'=>'Modern rethink of a narrowboat, ideal for liveaboard life cruising the waterways',
             'comparison'=>'The Dynasty rethinks the traditional narrowboat with a view to making the best use of space for living aboard. In this design, the welldeck at the front is replaced by an extended cabin. This gains an extra 5ft of interior living space on the same sized boat. This also allows for a more luxurious master bedroom. The option of a full kingsize bed in the front of the boat is a luxury only afforded on a narrowboat of this design.<br>Pros:<ul class="ul-visible"><li>Extra interior space</li><li>Kingsize master bed</li><li>More flexibility with interior layout</li></ul><br>Cons:<ul class="ul-visible"><li>No Welldeck at the front</li><li>Not quite as traditional</li><li>Can only access the bow from outside</li></ul>',
 
-            'long_description'=>'The Dynasty represents the ultimate in practicality. From it&#39;s go-anywhere dimensions to the practical use of space at the bow of the boat, this craft is for anyone looking for the perfect cruising boat. The extended cabin at the front of the boat offers 5&#39; of extra internal space compared to a boat with a welldeck.']
+            'long_description'=>'The Dynasty represents the ultimate in practicality. From it&#39;s go-anywhere dimensions to the practical use of space at the bow of the boat, this craft is for anyone looking for the perfect cruising boat. The extended cabin at the front of the boat offers 5&#39; of extra internal space compared to a boat with a welldeck.',
+            'virtual_tour'=>'https://my.matterport.com/show/?m=ppsMWJeALaZ'
+        ]
         );
         $a->fileConnection()->create(['src'=>'/img/dynasty2.jpg','is_image'=>true]);
         $a->fileConnection()->create(['src'=>'/img/dynasty1.jpg','is_image'=>true]);
@@ -112,7 +114,9 @@ class seedModels extends Seeder
 
             ',
 
-            'long_description'=>"The Jupiter represents an incredible place to live. With such striking looks, this boat won&#39;t fail to be noticed wherever she goes. The sweeping squared stern affords a very large entertaining space at the back of the boat. When the optional wheelhouse is chosen, this space is incredible for entertaining friends. The flat-bottomed hull allows for more interior space."]
+            'long_description'=>"The Jupiter represents an incredible place to live. With such striking looks, this boat won&#39;t fail to be noticed wherever she goes. The sweeping squared stern affords a very large entertaining space at the back of the boat. When the optional wheelhouse is chosen, this space is incredible for entertaining friends. The flat-bottomed hull allows for more interior space.",
+            'virtual_tour'=>'https://my.matterport.com/show/?m=nPXW1hNR4Mp'
+        ]
         );
         $d->fileConnection()->create(['src'=>'/img/stock1.jpg','is_image'=>true]);
         $d->fileConnection()->create(['src'=>'/img/jupiter.jpg','is_image'=>true]);
@@ -204,7 +208,9 @@ class seedModels extends Seeder
                     <li>Less "boaty" than a barge</li>
                 </ul>',
             
-            'long_description'=>'The Galaxy is built to be incredibly comfortable and easy to live on. Practicality and usability are are the forefront of the design of this boat. With the amazing spaces and designs of the interior, it is easy to forget you are on a boat. The inside of a Galaxy has the feel of a luxury apartment.']
+            'long_description'=>'The Galaxy is built to be incredibly comfortable and easy to live on. Practicality and usability are are the forefront of the design of this boat. With the amazing spaces and designs of the interior, it is easy to forget you are on a boat. The inside of a Galaxy has the feel of a luxury apartment.',
+            'virtual_tour'=>'http://www.mi360.net/Boats/NBC_Galaxy/_auto/html5/NBC_Galaxy.html'
+        ]
         ); 
         $g->fileConnection()->create(['src'=>'/img/galaxy1.jpg','is_image'=>true]);
         $g->fileConnection()->create(['src'=>'/img/galaxy2.jpg','is_image'=>true]);

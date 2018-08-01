@@ -13,7 +13,7 @@
 				<div class="column is-11"><h3>Hull Style&nbsp;:&nbsp;<span>{{ shared.chosen.choices.hull_style.name }}</span></h3></div>
 
 				<div class="column is-1">
-					<div class="button" @click="editHull">Edit ></div>
+					<div class="button" @click="editHull">Change ></div>
 				</div>
 		</div>			
 
@@ -27,7 +27,7 @@
 				<div class="column is-11"><h3>Model&nbsp;:&nbsp;<span>{{ shared.chosen.choices.boat_model.name }}</span></h3></div>
 
 				<div class="column is-1">
-					<div class="button" @click="editModel">Edit ></div>
+					<div class="button" @click="editModel">Change ></div>
 				</div>
 		</div>			
 
@@ -41,7 +41,7 @@
 				<div class="column is-11"><h3>Width&nbsp;:&nbsp;<span>{{ shared.chosen.choices.beam.feet }}</span></h3></div>
 
 				<div class="column is-1">
-					<div class="button" @click="editBeam">Edit ></div>
+					<div class="button" @click="editBeam">Change ></div>
 				</div>
 		</div>			
 
@@ -54,7 +54,7 @@
 				<div class="column is-11"><h3>Length&nbsp;:&nbsp;<span>{{ shared.chosen.choices.loa.feet }}</span></h3></div>
 
 				<div class="column is-1">
-					<div class="button" @click="editLoa">Edit ></div>
+					<div class="button" @click="editLoa">Change ></div>
 				</div>
 		</div>			
 
@@ -67,7 +67,7 @@
 				<div class="column is-11"><h3>Trim Level&nbsp;:&nbsp;<span>{{ shared.chosen.choices.trim_level.name }}</span></h3></div>
 
 				<div class="column is-1">
-					<div class="button" @click="editTrim">Edit ></div>
+					<div class="button" @click="editTrim">Change ></div>
 				</div>
 		</div>			
 

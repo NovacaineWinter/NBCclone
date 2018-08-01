@@ -21,7 +21,8 @@ class CreateModelsTable extends Migration
             $table->string('long_description',5000);
             $table->string('specsheet')->default(''); 
             $table->integer('primary_image_id')->default(0);   
-            $table->integer('hull_style_id');     
+            $table->integer('hull_style_id'); 
+            $table->string('virtual_tour')->default(0);    
             $table->timestamps();
         });
     }

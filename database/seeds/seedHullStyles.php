@@ -30,7 +30,9 @@ class seedHullStyles extends Seeder
                 <li>Freestanding furniture can be problematic</li>
             </ul>',
             
-            'long_description'=>'With the ability to travel anywhere, Narrowboats offer the ultimate freedom to explore. With the traditional look that never tires, narrowboats deliver the quintessential waterways experience. With their origins in traditional working craft, the narrowboat of today represents a significant improvement on the vessels of old. <br> Modern technology, careful thought and meticulous planning go into each and every one of our narrowboats, each perfectly tailored to suit its purpose. Given that space is at a premium onboard a narrowboat, the design of the interior must maximize the space available to make the most useable boat possible. It is through attention to detail and listening to customer requirements that make life on board one of our boats a sublime, stress-free experience.']
+            'long_description'=>'With the ability to travel anywhere, Narrowboats offer the ultimate freedom to explore. With the traditional look that never tires, narrowboats deliver the quintessential waterways experience. With their origins in traditional working craft, the narrowboat of today represents a significant improvement on the vessels of old. <br> Modern technology, careful thought and meticulous planning go into each and every one of our narrowboats, each perfectly tailored to suit its purpose. Given that space is at a premium onboard a narrowboat, the design of the interior must maximize the space available to make the most useable boat possible. It is through attention to detail and listening to customer requirements that make life on board one of our boats a sublime, stress-free experience.',
+            'virtual_tour'=>'https://my.matterport.com/show/?m=ppsMWJeALaZ'
+        ]
         );
         $a->fileConnection()->create(['src'=>'/img/dynasty2.jpg','is_image'=>true]);
         $a->fileConnection()->create(['src'=>'/img/dynasty1.jpg','is_image'=>true]);
@@ -63,7 +65,9 @@ class seedHullStyles extends Seeder
                     <li>Less "boaty" than a barge</li>
                 </ul>',
             
-            'long_description'=>'Our widebeams are build to be incredibly comfortable and easy to live on. Practicality and usability are are the forefront of the design of these boats. With the amazing spaces and designs of the interior, it is easy to forget you are on a boat. The inside of a widebeam has the feel of a luxury apartment.']
+            'long_description'=>'Our widebeams are build to be incredibly comfortable and easy to live on. Practicality and usability are are the forefront of the design of these boats. With the amazing spaces and designs of the interior, it is easy to forget you are on a boat. The inside of a widebeam has the feel of a luxury apartment.',
+            'virtual_tour'=>'http://www.mi360.net/Boats/NBC_Galaxy/_auto/html5/NBC_Galaxy.html'
+        ]
         );
         $b->fileConnection()->create(['src'=>'/img/galaxy1.jpg','is_image'=>true]);
         $b->fileConnection()->create(['src'=>'/img/galaxy2.jpg','is_image'=>true]);
@@ -95,7 +99,9 @@ class seedHullStyles extends Seeder
                 <li>No front well deck</li>
             </ul>',
 
-        	'long_description'=>'Barges for most are the cream of the crop. These boats ooze charm and sophistication. The craftsmanship that goes into forming the steel of the hull is matched by the attention to detail of the interior design.']
+        	'long_description'=>'Barges for most are the cream of the crop. These boats ooze charm and sophistication. The craftsmanship that goes into forming the steel of the hull is matched by the attention to detail of the interior design.',
+            'virtual_tour'=>'https://my.matterport.com/show/?m=nPXW1hNR4Mp'
+        ]
         );
         $c->fileConnection()->create(['src'=>'/img/jupiter.jpg','is_image'=>true]);
         $c->fileConnection()->create(['src'=>'/img/neptune1.jpg','is_image'=>true]);

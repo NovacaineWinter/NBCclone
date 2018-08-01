@@ -20,6 +20,7 @@ class CreateHullStyleTable extends Migration
             $table->string('comparison',5000);
             $table->string('long_description',5000);  
             $table->integer('primary_image_id')->default(0);
+            $table->string('virtual_tour')->default(0);
             $table->timestamps();
         });
     }

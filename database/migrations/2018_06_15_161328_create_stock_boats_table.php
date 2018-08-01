@@ -24,6 +24,7 @@ class CreateStockBoatsTable extends Migration
             $table->string('specsheet')->default('');
             $table->string('nonce')->default('');
             $table->integer('primary_image_id')->default(0); 
+            $table->string('virtual_tour')->default(0);
             $table->timestamps();
         });
     }
