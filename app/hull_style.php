@@ -34,6 +34,20 @@ class hull_style extends Model
         ]);
     }   
 
+
+    public function newFile($fileUploaded,$description){
+
+        //needs to return the new image object        
+        $path =$fileUploaded->store('public');
+        
+        return $this->fileConnection()->create([
+            'src' => \Storage::url($path),
+            'asset'=>$path,
+            'is_image'=>false,
+            'description'=>$description
+        ]);
+    }
+    
     public function infoBites(){
         return $this->morphMany('App\infobites','owner');
     }

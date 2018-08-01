@@ -23,6 +23,7 @@ Vue.component('trim-level-card', require('./components/configureTrimLevel/config
 Vue.component('save-successful-banner', require('./components/saveSuccessfulBanner.vue'));
 Vue.component('save-unsuccessful-banner', require('./components/saveUnsuccessfulBanner.vue'));
 Vue.component('new-image-modal', require('./components/newImageModal.vue'));
+Vue.component('new-file-modal', require('./components/newFileModal.vue'));
 
 
 Vue.component('info-bite', require('./components/infobites/infobite.vue'));

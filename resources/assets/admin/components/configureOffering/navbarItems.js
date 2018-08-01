@@ -9,6 +9,12 @@ navbarItems.push(
 		bold:true,
 	},*/
 	{
+		uri:'/info-bites',
+		text:'Info Bites',
+		position:19,
+		bold:true,
+	},
+	{
 		uri:'/hull-styles',
 		text:'Hull Styles',
 		position:20,

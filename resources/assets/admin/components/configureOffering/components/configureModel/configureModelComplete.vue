@@ -86,6 +86,43 @@
         </div>
     </section>
 
+
+
+<!-- File Upload -->
+    <section style="background-color:#cccccc;margin: 0px -24px;">&nbsp;</section> 
+    
+    <section class="section">
+        <div class="columns has-text-centered">
+            <div class="column is-4">&nbsp;</div>
+            <div class="column is-4">
+                <p class="title">Files &amp; Downloads</p>
+                <a class="button is-info is-outlined" @click="newFileModalOpen=true">+ Add new file</a>
+
+                 <table class="table is-striped is-fullwidth">
+                    <thead>
+                        <tr>
+                            <th>Document</th>
+                            <th></th>
+                            <th></th>                           
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="doc in imported.modelToEdit.files">
+                            <td>{{doc.description}}</td>
+                            <td><a class="button is-primary is-outlined" :href="doc.src">Download</a></td>
+                            <td><a class="button is-danger is-outlined" @click="deleteFile(doc.id)">Delete</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+
+            </div>
+            <div class="column is-4">&nbsp;</div>
+        </div>
+    </section>
+
+
+
     <section style="background-color:#cccccc;margin: 0px -24px;">&nbsp;</section> 
 
 
@@ -105,6 +142,15 @@
         @imageUploadOk="imageUploaded"
         @imageUploadNotOk="imageNotUploaded">        
     </new-image-modal>
+
+    <new-file-modal
+        v-if="newFileModalOpen" 
+        @closeModal="newFileModalOpen=false" 
+        targetModel="model" 
+        :targetInfo="imported.modelToEdit"
+        @fileUploadOk="fileUploaded"
+        @fileUploadNotOk="fileNotUploaded">        
+    </new-file-modal>
 
     </section>
 </template>
@@ -127,6 +173,7 @@
                     params: {
                         model:'model',
                         target: this.targetData,
+                        desc:this.description
                       }                    
                   })            
                 .then(this.saveSuccessful)
@@ -156,6 +203,7 @@
                 }
             },
 
+
             saveImage(img_id){
                 let img =_.filter(this.imported.modelToEdit.images,{id:img_id})[0];
                 axios.get(endpoints.updateImage, {
@@ -172,6 +220,37 @@
                 this.imported.modelToEdit.images=_.reject(this.imported.modelToEdit.images, ['id', target]);
                 this.saveSuccessful;
             },
+
+
+
+            fileDeleted(target){
+                this.imported.modelToEdit.files=_.reject(this.imported.modelToEdit.files, ['id', target]);
+                this.saveSuccessful;
+            },
+            deleteFile(target){
+                if(confirm('Delete File?')){
+
+                    axios.get(endpoints.deleteFile, {
+                        params: {
+                            target_file:target,
+                          }                    
+                      })            
+                    .then(this.fileDeleted(target))
+
+                    .catch(this.saveUnsuccessful);
+                }
+            },
+            fileUploaded(newFile){
+                this.imported.modelToEdit.files.push(newFile);               
+                this.newFileModalOpen = false;
+                this.saveSuccessful();
+            },
+            fileNotUploaded(){
+                this.newFileModalOpen = false;
+                this.saveUnsuccessful();
+            },
+
+
 
             changedPrimaryImage(id){
                 axios.get(endpoints.updatePrimaryImage, {
@@ -194,7 +273,8 @@
             imageNotUploaded(){
                 this.newImageModalOpen = false;
                 this.saveUnsuccessful();
-            }
+            },
+
             
         },
 
@@ -217,7 +297,8 @@
 		        imported:shared,
                 successfullySaved:false,
                 unsuccessfullySaved:false, 
-                newImageModalOpen:false,                          
+                newImageModalOpen:false,      
+                newFileModalOpen:false                    
 		      }
 	    },
 /*

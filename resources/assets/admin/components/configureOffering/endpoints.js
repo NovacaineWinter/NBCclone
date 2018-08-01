@@ -13,7 +13,9 @@ endpoints.updateModels = '/vue/update';
 endpoints.updatePrimaryImage = '/vue/update/primary-image';
 
 endpoints.deleteImage = '/vue/update/delete-image';
+endpoints.deleteFile = '/vue/update/delete-file';
 endpoints.newImage = '/vue/update/new-image';
+endpoints.newFile = '/vue/update/new-file';
 endpoints.updateImage = '/vue/update/image';
 
 endpoints.newInfobite = '/vue/update/new-infobite';

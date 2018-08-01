@@ -43,6 +43,12 @@
 		Route::get('/vue/update/image','vue@updateImage');
 		Route::post('/vue/update/new-infobite','vue@newInfobite');
 
+		/*Deal with file upload*/
+
+		Route::post('/vue/update/new-file','vue@newFile');
+		Route::get('/vue/update/delete-file','vue@deleteFile');
+		
+
 
 	/* Deleting endpoints */
 

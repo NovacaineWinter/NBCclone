@@ -3,9 +3,12 @@
 <div class="modal is-active box">
 	<div class="modal-background"></div>
 	<div class="modal-content box">
-		<h1>new image</h1>
+		<h1>New File</h1>
 		<input type="file" class="form-control" @change="fileChange">
+		<input type="text" v-model="description" placeholder="Description..">
+		<div class="button is-info is-outlined" @click="uploadFile">Upload</div>
 	</div>
+
 	<button class="modal-close is-large" @click="$emit('closeModal')" aria-label="close"></button>
 </div>	
    
@@ -19,16 +22,19 @@
 
         methods:{
             fileChange(event){
-                this.attachment.file = event.target.files[0];
+                this.attachment.file = event.target.files[0];                
+            }, 
 
-                let bodyFormData = new FormData();
+            uploadFile(){
+            	let bodyFormData = new FormData();
 
 				bodyFormData.append('file',this.attachment.file);
 				bodyFormData.append('model',this.theModel);
 				bodyFormData.append('target',this.theInfo.id);
+				bodyFormData.append('desc',this.description);
 
 				axios.post(
-				    endpoints.newImage,
+				    endpoints.newFile,
 				    bodyFormData,
 				    { 
 				    	headers: {
@@ -40,12 +46,12 @@
 				    .catch(notBeenSuccess.bind('data',this));
 
 				    function hasBeenSuccess(context,response){
-				    	context.$emit('imageUploadOk',response.data);
+				    	context.$emit('fileUploadOk',response.data);
 				    }
 				    function notBeenSuccess(context,response){
-				    	context.$emit('imageUploadNotOk');
+				    	context.$emit('fileUploadNotOk');
 				    }
-            }, 
+            }
         },
 
 
@@ -54,6 +60,7 @@
 		        attachment:{file: null},
 		       	theInfo:this.targetInfo,
 		        theModel:this.targetModel,
+		        description:''
 		      }
 	    },
 

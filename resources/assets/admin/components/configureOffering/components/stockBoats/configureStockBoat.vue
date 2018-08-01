@@ -68,13 +68,44 @@
 	            </div>
 
 
+                <div class="column is-one-quarter">
+                    <div class="button is-child" @click="newImageModalOpen=true">Add New Image +</div>  
+                </div>
+            </div>
+        </section>
 
-	            <div class="column is-one-quarter">
-	                <div class="button is-child" @click="newImageModalOpen=true">Add New Image +</div>  
-	            </div>
-	        </div>
-	    </section>
+    <!-- File Upload -->
+        <section style="background-color:#cccccc;margin: 0px -24px;">&nbsp;</section> 
+        
+        <section class="section">
+            <div class="columns has-text-centered">
+                <div class="column is-4">&nbsp;</div>
+                <div class="column is-4">
+                    <p class="title">Files &amp; Downloads</p>
+                    <a class="button is-info is-outlined" @click="newFileModalOpen=true">+ Add new file</a>
 
+                     <table class="table is-striped is-fullwidth">
+                        <thead>
+                            <tr>
+                                <th>Document</th>
+                                <th></th>
+                                <th></th>                           
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="doc in toEdit.files">
+                                <td>{{doc.description}}</td>
+                                <td><a class="button is-primary is-outlined" :href="doc.src">Download</a></td>
+                                <td><a class="button is-danger is-outlined" @click="deleteFile(doc.id)">Delete</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+
+                </div>
+                <div class="column is-4">&nbsp;</div>
+            </div>
+        </section>
 
 
 		<save-successful-banner v-if="successfullySaved" @enough="successfullySaved=false"></save-successful-banner>
@@ -88,6 +119,16 @@
 		    @imageUploadOk="imageUploaded"
 		    @imageUploadNotOk="imageNotUploaded">        
 		</new-image-modal>
+
+    <new-file-modal
+        v-if="newFileModalOpen" 
+        @closeModal="newFileModalOpen=false" 
+        targetModel="stockBoat" 
+        :targetInfo="toEdit"
+        @fileUploadOk="fileUploaded"
+        @fileUploadNotOk="fileNotUploaded">        
+    </new-file-modal>
+
 
 	</div>
 </template>
@@ -185,7 +226,34 @@
             imageNotUploaded(){
                 this.newImageModalOpen = false;
                 this.saveUnsuccessful();
-            }
+            },
+
+            fileDeleted(target){
+                this.toEdit.files=_.reject(this.toEdit.files, ['id', target]);
+                this.saveSuccessful;
+            },
+            deleteFile(target){
+                if(confirm('Delete File?')){
+
+                    axios.get(endpoints.deleteFile, {
+                        params: {
+                            target_file:target,
+                          }                    
+                      })            
+                    .then(this.fileDeleted(target))
+
+                    .catch(this.saveUnsuccessful);
+                }
+            },
+            fileUploaded(newFile){
+                this.toEdit.files.push(newFile);               
+                this.newFileModalOpen = false;
+                this.saveSuccessful();
+            },
+            fileNotUploaded(){
+                this.newFileModalOpen = false;
+                this.saveUnsuccessful();
+            },
 
         },
 /*
@@ -201,7 +269,8 @@
 		    return{
 		        successfullySaved:false,
 		        unsuccessfullySaved:false,	
-		        newImageModalOpen:false,	        
+		        newImageModalOpen:false,
+                newFileModalOpen:false	        
 		      }
 	    },
 

@@ -221,6 +221,42 @@ class vue extends Controller
         }
 
 
+/*=======================================================================================================================================
+        *******************************************************************************************************************************
+=======================================================================================================================================*/
+
+
+
+        public function newFile(Request $request){
+            if($request->hasFile('file') && $request->has('model') && $request->has('target') && $request->has('desc')){
+
+               
+                switch($request->get('model')){                    
+                    case 'hull':
+                        $toAddTo = \App\hull_style::find($request->get('target'));
+                        break;
+
+                    case 'model':
+                        $toAddTo = \App\boat_model::find($request->get('target'));
+                        break;
+
+                    case 'trim':
+                        $toAddTo = \App\trim_level::find($request->get('target'));
+                        break;
+
+                    case 'stockBoat':
+                        $toAddTo = \App\stock_boat::find($request->get('target'));
+                        break;
+                }
+
+                return $toAddTo->newFile($request->file('file'),$request->get('desc'));
+
+            }else{
+                abort(420);
+            }  
+        }
+
+
 
 /*=======================================================================================================================================
         *******************************************************************************************************************************
@@ -233,6 +269,27 @@ class vue extends Controller
              if($request->has('target_img')){                
 
                 $toDelete = \App\file::find($request->get('target_img'));
+
+                $toDelete->deleteFile();
+
+
+            }else{
+                abort(420);
+            }
+        }        
+
+
+
+/*=======================================================================================================================================
+        *******************************************************************************************************************************
+=======================================================================================================================================*/
+
+
+        public function deleteFile(Request $request){
+
+             if($request->has('target_file')){                
+
+                $toDelete = \App\file::find($request->get('target_file'));
 
                 $toDelete->deleteFile();
 
@@ -297,6 +354,10 @@ class vue extends Controller
 
             case 'trim':
                 $toAddTo = \App\trim_level::find($request->get('target'));
+                break;
+
+            case 'generic':
+                $toAddTo = \App\generic::find(1);
                 break;
         }
 

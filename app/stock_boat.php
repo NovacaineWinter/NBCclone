@@ -30,6 +30,22 @@ class stock_boat extends Model
         return $this->morphMany('App\infobites','owner');
     }
 
+
+    
+
+    public function newFile($fileUploaded,$description){
+
+        //needs to return the new image object        
+        $path =$fileUploaded->store('public');
+        
+        return $this->fileConnection()->create([
+            'src' => \Storage::url($path),
+            'asset'=>$path,
+            'is_image'=>false,
+            'description'=>$description
+        ]);
+    } 
+
     public function newImage($img){
 
         //needs to return the new image object        

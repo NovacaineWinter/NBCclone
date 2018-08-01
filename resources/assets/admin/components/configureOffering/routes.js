@@ -27,6 +27,11 @@ routes.push(
 		path:'/stock-boats',
 
 		component: require('./views/stockBoats.vue')
+	},	
+	{
+		path:'/info-bites',
+
+		component: require('./views/infobites.vue')
 	},		
 );
 
