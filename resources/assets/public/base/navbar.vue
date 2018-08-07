@@ -1,6 +1,7 @@
 		
 <template>
 	<div>
+		<contact-buttons></contact-buttons>
 		<cookie-banner></cookie-banner>
 		<nav class="navbar is-fixed-top"  role="navigation" aria-label="main navigation">
 

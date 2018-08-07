@@ -3,7 +3,7 @@
 	<div style="margin-top:-69px" id="homeview">
 		<a href="#firstSection" v-smooth-scroll="{ duration: 1000, offset: -85 }">		
 			<span class="icon" id="downarrow">
-				<i class="fas fa-arrow-circle-down has-text-centered"></i>
+				<font-awesome-icon icon="arrow-circle-down" />
 			</span>	
 		</a>
 		<section class="hero is-fullheight" id="homebanner">

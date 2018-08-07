@@ -3,7 +3,26 @@ import axios from 'axios';
 import VueRouter from 'vue-router';
 import vueSmoothScroll from 'vue-smooth-scroll';
 import VueCarousel from 'vue-carousel';
-/*import fontawesome from '@fortawesome/fontawesome';*/
+
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+//add FA icons that we use
+import { faPencilAlt } from '@fortawesome/free-solid-svg-icons'
+library.add(faPencilAlt)
+
+import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons'
+library.add(faQuestionCircle)
+
+import { faStoreAlt } from '@fortawesome/free-solid-svg-icons'
+library.add(faStoreAlt)
+
+import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons'
+library.add(faMapMarkerAlt)
+
+import { faArrowCircleDown } from '@fortawesome/free-solid-svg-icons'
+library.add(faArrowCircleDown)
+
 
 import './setupRoutes.js';
 import './navbarItems.js';	
@@ -43,3 +62,6 @@ Vue.use(VueRouter);
 Vue.use(vueSmoothScroll);
 
 Vue.use(VueCarousel);
+
+//vue component for FA icons
+Vue.component('font-awesome-icon', FontAwesomeIcon)
