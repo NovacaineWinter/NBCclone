@@ -19,6 +19,9 @@
                             <td>{{doc.description}}</td>
                             <td><a class="button is-primary is-outlined" :href="doc.src">Download</a></td>
                         </tr>
+                        <tr v-if="imported.chosen.detail.files == ''">
+                            <td>No Downloads Available</td>
+                        </tr>
                     </tbody>
                 </table>
             </div>

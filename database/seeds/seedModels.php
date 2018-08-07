@@ -30,12 +30,21 @@ class seedModels extends Seeder
             'virtual_tour'=>'https://my.matterport.com/show/?m=ppsMWJeALaZ'
         ]
         );
-        $a->fileConnection()->create(['src'=>'/img/dynasty2.jpg','is_image'=>true]);
-        $a->fileConnection()->create(['src'=>'/img/dynasty1.jpg','is_image'=>true]);
-        $a->fileConnection()->create(['src'=>'/img/dynasty3.jpg','is_image'=>true]);
-        $a->fileConnection()->create(['src'=>'/img/cygnet1.jpg','is_image'=>true]);
-        $a->fileConnection()->create(['src'=>'/img/cygnet2.jpg','is_image'=>true]);
-        $a->fileConnection()->create(['src'=>'/img/cygnet3.jpg','is_image'=>true]);        
+        $a->fileConnection()->create(['src'=>'/img/dyn/dyn1.jpg','is_image'=>true]);      
+        $a->fileConnection()->create(['src'=>'/img/dyn/dyn2.jpg','is_image'=>true]);      
+        $a->fileConnection()->create(['src'=>'/img/dyn/dyn3.jpg','is_image'=>true]);      
+        $a->fileConnection()->create(['src'=>'/img/dyn/dyn4.jpg','is_image'=>true]);      
+        $a->fileConnection()->create(['src'=>'/img/dyn/dyn5.jpg','is_image'=>true]);      
+        $a->fileConnection()->create(['src'=>'/img/dyn/dyn6.jpg','is_image'=>true]);      
+        $a->fileConnection()->create(['src'=>'/img/dyn/dyn7.jpg','is_image'=>true]);      
+        $a->fileConnection()->create(['src'=>'/img/dyn/dyn8.jpg','is_image'=>true]);      
+        $a->fileConnection()->create(['src'=>'/img/dyn/dyn9.jpg','is_image'=>true]);      
+        $a->fileConnection()->create(['src'=>'/img/dyn/dyn10.jpg','is_image'=>true]);      
+        $a->fileConnection()->create(['src'=>'/img/dyn/dyn11.jpg','is_image'=>true]);      
+        $a->fileConnection()->create(['src'=>'/img/dyn/dyn12.jpg','is_image'=>true]);      
+        $a->fileConnection()->create(['src'=>'/img/dyn/dyn13.jpg','is_image'=>true]);      
+        $a->fileConnection()->create(['src'=>'/img/dyn/dyn14.jpg','is_image'=>true]);      
+        $a->fileConnection()->create(['src'=>'/img/dyn/dyn15.jpg','is_image'=>true]);      
         $a->primary_image_id = $a->images()->first()->id;
         $a->save();
 
@@ -75,9 +84,17 @@ class seedModels extends Seeder
 
             'long_description'=>'This boat truly has the ability to go anywhere, enjoying all the waterways have to offer. A classic cruiser stern narrowboat, this model has a number of interior layout options available.']
         );
-        $c->fileConnection()->create(['src'=>'/img/swan1.jpg','is_image'=>true]);
-        $c->fileConnection()->create(['src'=>'/img/swan2.jpg','is_image'=>true]);
-        $c->fileConnection()->create(['src'=>'/img/swan3.jpg','is_image'=>true]);
+        $c->fileConnection()->create(['src'=>'/img/swan/swan1.jpg','is_image'=>true]);     
+        $c->fileConnection()->create(['src'=>'/img/swan/swan2.jpg','is_image'=>true]);     
+        $c->fileConnection()->create(['src'=>'/img/swan/swan3.jpg','is_image'=>true]);     
+        $c->fileConnection()->create(['src'=>'/img/swan/swan4.jpg','is_image'=>true]);     
+        $c->fileConnection()->create(['src'=>'/img/swan/swan5.jpg','is_image'=>true]);     
+        $c->fileConnection()->create(['src'=>'/img/swan/swan6.jpg','is_image'=>true]);     
+        $c->fileConnection()->create(['src'=>'/img/swan/swan7.jpg','is_image'=>true]);     
+        $c->fileConnection()->create(['src'=>'/img/swan/swan8.jpg','is_image'=>true]);     
+        $c->fileConnection()->create(['src'=>'/img/swan/swan9.jpg','is_image'=>true]);     
+        $c->fileConnection()->create(['src'=>'/img/swan/swan10.jpg','is_image'=>true]);     
+        $c->fileConnection()->create(['src'=>'/img/swan/swan11.jpg','is_image'=>true]);     
         $c->primary_image_id = $c->images()->first()->id;
         $c->save();
 
@@ -146,9 +163,26 @@ class seedModels extends Seeder
 
             'long_description'=>'The Neptune is a thought out liveaboard barge, perfect for enjoying life at a relaxed pace. This is everything a barge should be. The sinuous curved forward cabin gives the master bedroom a distinctive charm, especially with the optional wooden panelling.']
         ); 
-        $e->fileConnection()->create(['src'=>'/img/neptune1.jpg','is_image'=>true]);
-        $e->fileConnection()->create(['src'=>'/img/neptune2.jpg','is_image'=>true]);
-        $e->fileConnection()->create(['src'=>'/img/neptune3.jpg','is_image'=>true]);
+        $e->fileConnection()->create(['src'=>'/img/nep/nep1.jpg','is_image'=>true]);
+        $e->fileConnection()->create(['src'=>'/img/nep/nep2.jpg','is_image'=>true]);
+        $e->fileConnection()->create(['src'=>'/img/nep/nep3.jpg','is_image'=>true]);
+        $e->fileConnection()->create(['src'=>'/img/nep/nep4.jpg','is_image'=>true]);
+        $e->fileConnection()->create(['src'=>'/img/nep/nep5.jpg','is_image'=>true]);
+        $e->fileConnection()->create(['src'=>'/img/nep/nep6.jpg','is_image'=>true]);
+        $e->fileConnection()->create(['src'=>'/img/nep/nep7.jpg','is_image'=>true]);
+        $e->fileConnection()->create(['src'=>'/img/nep/nep8.jpg','is_image'=>true]);
+        $e->fileConnection()->create(['src'=>'/img/nep/nep9.jpg','is_image'=>true]);
+        $e->fileConnection()->create(['src'=>'/img/nep/nep10.jpg','is_image'=>true]);
+        $e->fileConnection()->create(['src'=>'/img/nep/nep11.jpg','is_image'=>true]);
+        $e->fileConnection()->create(['src'=>'/img/nep/nep12.jpg','is_image'=>true]);
+        $e->fileConnection()->create(['src'=>'/img/nep/nep13.jpg','is_image'=>true]);
+        $e->fileConnection()->create(['src'=>'/img/nep/nep14.jpg','is_image'=>true]);
+        $e->fileConnection()->create(['src'=>'/img/nep/nep15.jpg','is_image'=>true]);
+        $e->fileConnection()->create(['src'=>'/img/nep/nep16.jpg','is_image'=>true]);
+        $e->fileConnection()->create(['src'=>'/img/nep/nep17.jpg','is_image'=>true]);
+        $e->fileConnection()->create(['src'=>'/img/nep/nep18.jpg','is_image'=>true]);
+        $e->fileConnection()->create(['src'=>'/img/nep/nep19.jpg','is_image'=>true]);
+        $e->fileConnection()->create(['src'=>'/img/nep/nep20.jpg','is_image'=>true]);
         $e->primary_image_id = $e->images()->first()->id;
         $e->save();
 
@@ -212,10 +246,24 @@ class seedModels extends Seeder
             'virtual_tour'=>'http://www.mi360.net/Boats/NBC_Galaxy/_auto/html5/NBC_Galaxy.html'
         ]
         ); 
-        $g->fileConnection()->create(['src'=>'/img/galaxy1.jpg','is_image'=>true]);
-        $g->fileConnection()->create(['src'=>'/img/galaxy2.jpg','is_image'=>true]);
-        $g->fileConnection()->create(['src'=>'/img/galaxy3.jpg','is_image'=>true]);
-        $g->fileConnection()->create(['src'=>'/img/img1.jpg','is_image'=>true]);
+        $g->fileConnection()->create(['src'=>'/img/gal/gal1.jpg','is_image'=>true]);
+        $g->fileConnection()->create(['src'=>'/img/gal/gal2.jpg','is_image'=>true]);
+        $g->fileConnection()->create(['src'=>'/img/gal/gal3.jpg','is_image'=>true]);
+        $g->fileConnection()->create(['src'=>'/img/gal/gal4.jpg','is_image'=>true]);
+        $g->fileConnection()->create(['src'=>'/img/gal/gal5.jpg','is_image'=>true]);
+        $g->fileConnection()->create(['src'=>'/img/gal/gal6.jpg','is_image'=>true]);
+        $g->fileConnection()->create(['src'=>'/img/gal/gal7.jpg','is_image'=>true]);
+        $g->fileConnection()->create(['src'=>'/img/gal/gal8.jpg','is_image'=>true]);
+        $g->fileConnection()->create(['src'=>'/img/gal/gal9.jpg','is_image'=>true]);
+        $g->fileConnection()->create(['src'=>'/img/gal/gal10.jpg','is_image'=>true]);
+        $g->fileConnection()->create(['src'=>'/img/gal/gal11.jpg','is_image'=>true]);
+        $g->fileConnection()->create(['src'=>'/img/gal/gal12.jpg','is_image'=>true]);
+        $g->fileConnection()->create(['src'=>'/img/gal/gal13.jpg','is_image'=>true]);
+        $g->fileConnection()->create(['src'=>'/img/gal/gal14.jpg','is_image'=>true]);
+        $g->fileConnection()->create(['src'=>'/img/gal/gal15.jpg','is_image'=>true]);
+        $g->fileConnection()->create(['src'=>'/img/gal/gal16.jpg','is_image'=>true]);
+        $g->fileConnection()->create(['src'=>'/img/gal/gal17.jpg','is_image'=>true]);
+        $g->fileConnection()->create(['src'=>'/img/gal/gal18.jpg','is_image'=>true]);
         $g->primary_image_id = $g->images()->first()->id;
         $g->save();                   
 
