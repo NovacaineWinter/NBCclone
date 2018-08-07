@@ -5,6 +5,7 @@ import navbarItems from '../setup/navbarItems';
 Vue.component('navbar-component', require('./navbar.vue'));
 Vue.component('footer-component', require('./footerLinks.vue'));
 
+
 navbarItems.push(	
 	{
 		uri:'/',

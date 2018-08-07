@@ -1,5 +1,35 @@
 <template>
 	<div id="footer">
+		<section class="hero is-info">
+			<div class="hero-body">
+				<div class="container">
+					<h1 class="title has-text-centered">Follow Us</h1>
+					<div class="columns socialicons">
+						<a href="https://twitter.com/nottsboatco" class="column has-text-centered">
+							<font-awesome-icon :icon="['fab', 'twitter']" />
+							<h6>Twitter</h6>
+						</a>
+						<a href="https://www.instagram.com/nottinghamboatco/" tag="div" class="column has-text-centered">
+							<font-awesome-icon :icon="['fab', 'instagram']" />
+							<h6>Instagram</h6>
+						</a>
+						<a href="https://www.facebook.com/NottinghamBoatCompany/" tag="div" class="column has-text-centered">							
+							<font-awesome-icon :icon="['fab', 'facebook-square']" />
+							<h6>Facebook</h6>
+						</a>
+						<a href="https://www.linkedin.com/company/nottingham-boat-company-ltd" tag="div" class="column has-text-centered">							
+							<font-awesome-icon :icon="['fab', 'linkedin']" />
+							<h6>LinkedIn</h6>
+						</a>
+						<a href="https://www.youtube.com/channel/UCCGotk6RgMnVvZIgjfS9lSw" tag="div" class="column has-text-centered">							
+							<font-awesome-icon :icon="['fab', 'youtube']" />
+							<h6>YouTube</h6>
+						</a>
+					</div>
+				</div>
+			</div>
+		</section>
+
 		<section class="hero is-medium is-bold is-branded">
 			<div class="hero-body">
 				<div class="container">
@@ -58,6 +88,13 @@
 	    .navbar-item{
 	    	span{
 	        	cursor:pointer;
+	    	}
+
+	    }
+	    .socialicons .column{
+	    	font-size:50px;
+	    	h6{
+	    		font-size:20px;
 	    	}
 	    }
 	}

@@ -4,8 +4,12 @@ import VueRouter from 'vue-router';
 import vueSmoothScroll from 'vue-smooth-scroll';
 import VueCarousel from 'vue-carousel';
 
+import { fas } from '@fortawesome/free-solid-svg-icons'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+
+
 
 //add FA icons that we use
 import { faPencilAlt } from '@fortawesome/free-solid-svg-icons'
@@ -22,6 +26,24 @@ library.add(faMapMarkerAlt)
 
 import { faArrowCircleDown } from '@fortawesome/free-solid-svg-icons'
 library.add(faArrowCircleDown)
+
+import { faTwitter } from '@fortawesome/free-brands-svg-icons'
+library.add(fas, faTwitter)
+
+import { faFacebookSquare } from '@fortawesome/free-brands-svg-icons'
+library.add(fas, faFacebookSquare)
+
+import { faInstagram } from '@fortawesome/free-brands-svg-icons'
+library.add(fas, faInstagram)
+
+import { faLinkedin } from '@fortawesome/free-brands-svg-icons'
+library.add(fas, faLinkedin)
+
+import { faYoutube } from '@fortawesome/free-brands-svg-icons'
+library.add(fas, faYoutube)
+
+
+
 
 
 import './setupRoutes.js';
