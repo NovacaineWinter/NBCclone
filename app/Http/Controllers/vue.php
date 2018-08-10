@@ -192,6 +192,7 @@ class vue extends Controller
 
 
         public function newImage(Request $request){
+            dd($request);
             if($request->hasFile('file') && $request->has('model') && $request->has('target')){
 
                
@@ -216,7 +217,7 @@ class vue extends Controller
                 return $toAddTo->newImage($request->file('file'));
 
             }else{
-                abort(420);
+                abort(499);
             }
         }
 

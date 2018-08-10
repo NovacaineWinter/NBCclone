@@ -34,7 +34,7 @@
 	
 
 	/*Updating endpoints*/
-		Route::get('/vue/update','vue@update');
+		Route::any('/vue/update','vue@update');
 
 		/* Endpoints to deal with images */
 		Route::get('/vue/update/primary-image','vue@primaryImage');

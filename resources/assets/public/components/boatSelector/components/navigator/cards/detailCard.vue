@@ -100,6 +100,7 @@
 					font-size: 14px;
 					letter-spacing: .1rem;
 					text-transform: uppercase;
+					border-radius:6px;
 				}
 			}
 			.view-detail-button:hover{

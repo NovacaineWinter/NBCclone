@@ -5,6 +5,7 @@
 		<cookie-banner></cookie-banner>
 		<nav class="navbar is-fixed-top"  role="navigation" aria-label="main navigation">
 
+	
 
 		<div class="smallstuff">
 			<div class="hamburger-button" @click="toggleHamburger">

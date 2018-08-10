@@ -151,7 +151,7 @@
            saveData: _.debounce(function() {this.save();}, 1000),
 
             save(){
-                axios.get(endpoints.updateModels, {
+                axios.post(endpoints.updateModels, {
                     params: {       
                     	model:'stockBoat',               
                         target: this.toEdit,

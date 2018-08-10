@@ -36,7 +36,7 @@
 		</section>
 		<section>
 			<div class="container section whitecontainer" id="firstSection">
-				<p class="has-text-centered subtitle">TRUST, INTEGRITY AND QUALITY</p>
+				<h2 class="has-text-centered subtitle">TRUST, INTEGRITY AND QUALITY</h2>
 				<div class="columns">
 					<div class="column columns is-mobile">
 						<div class="column has-text-centered"><img src="/img/partners/logos/bmf.jpg" alt="BMF logo" class="trustlogos"></div>
@@ -47,6 +47,60 @@
 						<div class="column has-text-centered"><img src="/img/partners/logos/cba.jpg" alt="CBA logo" class="trustlogos"></div>
 						<div class="column has-text-centered"><img src="/img/partners/logos/assistinsurance.jpg" alt="BMF logo " class="trustlogos"></div>
 						<div class="column has-text-centered"><img src="/img/partners/logos/crt.png" alt="CRT logo " class="trustlogos"></div>
+					</div>
+				</div>		
+			</div>
+		</section>
+
+		<section>
+			<div class="container section whitecontainer">
+				<div class="columns">
+					<div class="column is-2"></div>
+					<div class="column is-8">						
+						<h1 class="subtitle">Welcome to Nottingham Boat Co.</h1>
+						<p>
+							Ever since my first time aboard a boat I was taken. I loved everything about it; watching the beautiful scenery pass slowly by, the feeling of connection to the world, and to be able to go where I wanted, it was the ultimate feeling of living. Even when I was in a familiar area, I felt like I was in a different world, a relaxing world that moved slower. It was the perfect antidote to the hectic mayhem of modern life.<br><br>
+
+							I decided that I wanted my own boat, but quickly found that the boat building industry was outdated. While the occasional craftsman built beautiful furniture, the boats still used old technology which made them cold and damp in the winter, with systems that made life onboard feel more like camping than living. It was an industry crying out for innovation. <br><br>
+
+							This was how Nottingham Boat Co started. From the very beginning we have focused on quality and comfort. We have constantly innovated and invested in new technology. While everyone else has continued to build boats the way they always have, we have leapt to the forefront of the industry and continue to push the boundaries of quality and reliability. <br><br>
+
+							We love helping clients to realise their dreams. Every boat we build is tailored to each owner’s specific needs. We can help you visualise your dream boat with Computer Aided Design (CAD). We create photo-realistic renders of your boat before a single panel is fabricated to make sure everything works perfectly.<br><br>
+
+							The technology doesn’t stop there. We ensure everything fits together perfectly by using CNC robotics to cut and shape each panel, accurate to less than the width of a human hair – far more accurate than could ever be achieved by hand.  Our experienced fitters use this level of precision as an edge, to ensure everything works perfectly first time, drawers run smoothly, doors shut precisely, and stay that way for years to come.<br><br>
+
+							We make sure that your furniture and interior panels look good and are protected for years to come. We achieve this by applying the highest quality paints and varnishes available in our heated, environmentally controlled spray booth. Most boat manufacturers won’t invest the money in a proper spray booth, but we believe the quality and longevity of your boat is incredibly important and worth the investment.<br><br>
+
+							Everything we do stems from our relentless focus on building the very finest boats available. Life onboard should be luxurious. That’s why we always specify exceptional systems onboard the boat. From electrics to plumbing, you can rest assured that you can enjoy an idyllic lifestyle onboard your new boat.<br><br>
+
+							Unlike most builders, we are completely open during the build process, we provide very regular updates on the progress and invite you to visit at any time. When you commission a boat from us, we like to think of it as welcoming you to the Nottingham Boat Co family.<br><br>
+
+							Whether you want a fully fitted boat or a sailaway, we can help you realse your dream. If you want a sailaway, you should visit our sister site Sailaways.net, we have loads of useful info there.<br><br>
+
+							Finally, I would ask you to get in touch with us, regardless of what stage you are at. We love talking about boats and helping people to find their perfect solution. We want to build someone’s perfect boat so we will never pressure you, we are always here to answer questions, however big or small. <br><br>
+
+							Look forward to hearing from you soon<br><br><br><br>
+
+							Les Robinson,<br>
+							Founder and Managing Director
+						</p>
+					</div>
+					<div class="column is-2"></div>
+				</div>
+			</div>
+		</section>
+
+
+		<section>
+			<div class="container section whitecontainer">				
+				<div class="columns">
+					<div class="column columns is-mobile">
+						<div class="column has-text-centered"><img src="/img/partners/logos/sw.png" alt="Solidworks logo" class="trustlogos"></div>
+						<div class="column has-text-centered"><img src="img/partners/logos/sn.jpg" alt="SigmaNEST logo" class="trustlogos"></div>
+					</div>
+					<div class="column columns is-mobile">
+						<div class="column has-text-centered"><img src="/img/partners/logos/rd.jpg" alt="Radecal logo 2" class="trustlogos"></div>
+						<div class="column has-text-centered"><img src="/img/partners/logos/fro.png" alt="Froling logo" class="trustlogos"></div>
 					</div>
 				</div>		
 			</div>
